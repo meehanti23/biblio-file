@@ -2,6 +2,13 @@
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
 // place global css here
+
+//Color Palette
+$navbar-text-color: #ec8f00;
+$main-text-color: #292929;
+$navbar-background-color: #420e07;
+$main-background-color: #002907;
+
 *,
 *::before,
 *::after {
@@ -11,4 +18,30 @@
 :root {
   -moz-tab-size: 4;
   tab-size: 4;
+}
+
+body {
+  background-color: transparent;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: url("https://images.unsplash.com/photo-1637185612724-294227baaa49?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
+  opacity: 0.5;
+}
+
+.home-box {
+  border: 5px solid #420e07;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  background-color: #ec8f00;
+  border-radius: 10px;
+  margin-top: 3em;
+  text-align: center;
 }
