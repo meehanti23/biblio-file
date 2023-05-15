@@ -15,23 +15,25 @@ const TopBar = ({ user }) => {
   ];
 
   const authenticatedListItems = [
-    <li key="sign-out">
+    <li key="sign-out" className="menu-text">
       <SignOutButton />
     </li>,
   ];
 
   const authenticatedBookList = [
-    <li key="books">
-      <Link to="/bookshelf">BookShelf</Link>
+    <li key="books" className="menu-text book-shelf">
+      <Link to="/bookshelf">Book Shelf</Link>
     </li>,
   ];
 
   return (
     <div className="top-bar">
       <div className="top-bar-left">
-        <ul className="menu">
-          <li className="menu-text">App</li>
-          <li>
+        <ul className="navbar-list">
+          <li className="navbar-image">
+            <img src='https://personal-library-bucket.s3.amazonaws.com/bookcase-shelf-book-discussion-club-library-shelf-58a65dea5748faadc143a6f7a080bde7.png' alt='top-bar-image' className="top-bar-books"/>
+          </li>
+          <li className="menu-text home">
             <Link to="/">Home</Link>
           </li>
           <li className="menu-text">
