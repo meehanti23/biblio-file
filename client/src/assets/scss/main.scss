@@ -40,7 +40,7 @@ body::before {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 15px;
-  background-color: #ec8f00;
+  background-color: #517174;
   border-radius: 10px;
   margin-top: 3em;
   text-align: center;
@@ -52,4 +52,41 @@ body::before {
   background-color: #742419;
   color:#ec8f00;
   font-weight: bold;
+}
+
+.top-bar {
+  border-bottom: 5px solid #420e07;
+}
+
+a {
+  color: #742419;
+}
+
+.top-bar-books {
+  width: 100%;
+}
+
+.navbar-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+
+.navbar-list li {
+  margin-right: 10px;
+}
+
+.navbar-image{
+  width: 15%;
+}
+
+.home,
+.book-shelf {
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+.home {
+  margin-left: 1em;
 }
