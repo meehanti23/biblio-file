@@ -37,10 +37,10 @@ const AllBooks = (props) => {
     });
 
     return (
-        <>
-            <h1>All Books</h1>
+        <div className="primary home-box grid-x container">
+            <h1 className="cell">What is Everyone Reading?</h1>
             {mappedBooks}
-        </>
+        </div>
     )
 }
 

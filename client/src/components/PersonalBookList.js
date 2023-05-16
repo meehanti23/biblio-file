@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import BookTile from './BookTile';
+import PersonalBookTile from './PersonalBookTile';
 import axios from 'axios';
 
 const PersonalBookList = (props) => {
@@ -44,7 +44,7 @@ const PersonalBookList = (props) => {
     }, []);
 
     const mappedBooks = books.map((book) => {
-        return <BookTile 
+        return <PersonalBookTile 
             key={book.id} 
             id={book.id} 
             title={book.title} 
