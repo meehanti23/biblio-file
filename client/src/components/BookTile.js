@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const BookTile = ({ title, authors, smallImage, userEmail }) => {
+const BookTile = ({ title, authors, smallImage, userEmail, id }) => {
     let titleInfo
     if (title) {
         titleInfo = <h2>{title}</h2>
@@ -13,10 +14,10 @@ const BookTile = ({ title, authors, smallImage, userEmail }) => {
 
     return (
         <div className='book-tile home-box small-3 primary'>
-        {titleInfo}
-        {authorInfo}
-        <img src={smallImage} className='tile-thumbnail'/>
-        <h5>Submitted By: {userEmail}</h5>
+            <div className="book-name"><Link to={`/books/${id}`}>{titleInfo}</Link></div>
+            {authorInfo}
+            <img src={smallImage} className='tile-thumbnail'/>
+            <h5>Submitted By: {userEmail}</h5>
         </div>
     );
 };
