@@ -9,6 +9,7 @@ import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 import Homepage from "./Homepage";
 import PersonalBookList from "./PersonalBookList";
+import AllBooks from "./AllBooks";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -33,6 +34,7 @@ const App = (props) => {
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <Route exact path="/bookshelf" component={PersonalBookList} />
+        <Route exact path="/books" component={AllBooks} />
       </Switch>
     </Router>
   );

@@ -5,6 +5,21 @@ class GoogleBook extends Model {
     return 'google_books';
   }
 
+  static get relationMappings() {
+    const { User } = require('./index.js');
+
+    return {
+      user: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: User,
+        join: {
+          from: 'google_books.userId',
+          to: 'users.id',
+        },
+      },
+    };
+  }
+
   static get jsonSchema() {
     return {
       type: 'object',

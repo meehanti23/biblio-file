@@ -28,9 +28,9 @@ const PersonalBookList = (props) => {
 
     const getBooks = async () => {
         try {
-        const response = await axios.get('/api/v1/books/library');
+        const response = await axios.get('/api/v1/users');
         if (response.status === 200) {
-            setBooks(response.data.books);
+            setBooks(response.data.user.books);
         } else {
             console.error('Error in search:', response.data.error);
         }

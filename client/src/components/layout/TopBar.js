@@ -22,7 +22,7 @@ const TopBar = ({ user }) => {
 
   const authenticatedBookList = [
     <li key="books" className="menu-text book-shelf">
-      <Link to="/bookshelf">Book Shelf</Link>
+      <Link to="/bookshelf">Your Book Shelf</Link>
     </li>,
   ];
 
@@ -35,6 +35,9 @@ const TopBar = ({ user }) => {
           </li>
           <li className="menu-text home">
             <Link to="/">Home</Link>
+          </li>
+          <li className="menu-text home">
+            <Link to="/books">All Books</Link>
           </li>
           <li className="menu-text">
             <ul className="menu">{user ? authenticatedBookList : null}</ul>
