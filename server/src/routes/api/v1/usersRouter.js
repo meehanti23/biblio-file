@@ -20,4 +20,16 @@ usersRouter.post("/", async (req, res) => {
   }
 });
 
+usersRouter.get('/', async (req, res) => {
+  const userData = req.user;
+  try {
+    const user = await User.query().findById(userData.id);
+    const userBooks = await user.$relatedQuery('googleBooks');
+    user.books = userBooks;
+    return res.status(200).json({ user });
+  } catch (error) {
+    console.error('Error in getting user:', error);
+  }
+});
+
 export default usersRouter;

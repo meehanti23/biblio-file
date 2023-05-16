@@ -1,5 +1,5 @@
 import express from 'express';
-import { GoogleBook } from '../../../models/index.js';
+import { GoogleBook, User } from '../../../models/index.js';
 import axios from 'axios';
 
 const booksRouter = express.Router();
@@ -41,7 +41,7 @@ booksRouter.post('/', async (req, res) => {
     const categories = categoryArray.join(', ');
     const authorsArray = Array.isArray(body.authors) ? body.authors : [body.authors];
     const authors = authorsArray.join(', ');
-    const insertedBook = await GoogleBook.query().insert({ title: body.title, authors: authors, pageCount: body.pageCount, description: body.description, categories: categories, smallImage: body.imageLinks.smallThumbnail, largeImage: body.imageLinks.thumbnail });
+    const insertedBook = await GoogleBook.query().insert({ title: body.title, authors: authors, pageCount: body.pageCount, description: body.description, categories: categories, smallImage: body.imageLinks.smallThumbnail, largeImage: body.imageLinks.thumbnail, userId: req.user.id });
     return res.status(200).json({ book: insertedBook });
   } catch (error) {
     console.error('Error in inserting book:', error);

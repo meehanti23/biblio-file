@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BookTile = ({ title, description, categories, authors, pageCount, smallImage}) => {
+const PersonalBookTile = ({ title, description, categories, authors, pageCount, smallImage}) => {
     let titleInfo
     if (title) {
         titleInfo = <h2>{title}</h2>
@@ -15,12 +15,13 @@ const BookTile = ({ title, description, categories, authors, pageCount, smallIma
     }
 
     return (
-        <div className='book-tile home-box small-3 primary'>
+        <div className='personal-tile home-box small-5 primary'>
         {titleInfo}
         {authorInfo}
-        <img src={smallImage} className='tile-thumbnail'/>
+        {categoryInfo}
+        <img src={smallImage} className='tile-image'/>
         </div>
     );
 };
 
-export default BookTile;
+export default PersonalBookTile;

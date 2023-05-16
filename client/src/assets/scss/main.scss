@@ -47,6 +47,22 @@ body::before {
 }
 
 .book-tile {
+  background-color: #742419;
+  color: #ec8f00;
+  font-weight: bold;
+  width: calc(33.33% - 20px); /* Adjust the width based on your layout */
+  margin: 15px; /* Adjust the margin based on your desired spacing */
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.personal-tile {
   margin-left: auto;
   margin-right: auto;
   background-color: #742419;
@@ -93,4 +109,11 @@ a {
 
 .tile-image {
   margin-bottom: 1rem;
+}
+
+.tile-thumbnail {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: .5rem
 }
