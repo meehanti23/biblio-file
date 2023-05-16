@@ -15,13 +15,13 @@ const TopBar = ({ user }) => {
   ];
 
   const authenticatedListItems = [
-    <li key="sign-out" className="menu-text">
+    <li key="sign-out" className="menu-text menu">
       <SignOutButton />
     </li>,
   ];
 
   const authenticatedBookList = [
-    <li key="books" className="menu-text book-shelf">
+    <li key="books" className="menu-text book-shelf menu">
       <Link to="/bookshelf">Your Book Shelf</Link>
     </li>,
   ];
@@ -46,7 +46,7 @@ const TopBar = ({ user }) => {
           <li className="menu-text bookshelf-navbar">
             <ul className="menu">{user ? authenticatedBookList : null}</ul>
           </li>
-        <li className="menu">{user ? authenticatedListItems : unauthenticatedListItems}</li>
+          {user ? authenticatedListItems : unauthenticatedListItems}
         </ul>
       </div>
     </div>

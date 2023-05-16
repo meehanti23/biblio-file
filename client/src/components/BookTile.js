@@ -1,14 +1,11 @@
 import React from 'react';
 
-const BookTile = ({ title, description, categories, authors, pageCount, smallImage}) => {
+const BookTile = ({ title, authors, smallImage}) => {
     let titleInfo
     if (title) {
         titleInfo = <h2>{title}</h2>
     }
-    let categoryInfo
-    if (categories) {
-        categoryInfo = <p>Category: {categories}</p>
-    }
+
     let authorInfo
     if (authors) {
         authorInfo = <h4>Authors: {authors}</h4>
