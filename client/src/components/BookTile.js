@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BookTile = ({ title, authors, smallImage}) => {
+const BookTile = ({ title, authors, smallImage, userEmail }) => {
     let titleInfo
     if (title) {
         titleInfo = <h2>{title}</h2>
@@ -16,6 +16,7 @@ const BookTile = ({ title, authors, smallImage}) => {
         {titleInfo}
         {authorInfo}
         <img src={smallImage} className='tile-thumbnail'/>
+        <h5>Submitted By: {userEmail}</h5>
         </div>
     );
 };
