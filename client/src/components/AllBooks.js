@@ -28,11 +28,7 @@ const AllBooks = (props) => {
             id={book.id} 
             title={book.title} 
             authors={book.authors} 
-            pageCount={book.pageCount}
-            categories={book.categories}
-            description={book.description}
             smallImage={book.smallImage}
-            largeImage={book.largeImage}
             />;
     });
 
