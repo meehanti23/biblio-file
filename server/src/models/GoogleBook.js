@@ -8,9 +8,9 @@ class GoogleBook extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['volumeID'],
+      required: ['title'],
       properties: {
-        volumeID: { type: 'string' },
+        title: { type: 'string' },
       },
     };
   }

@@ -8,70 +8,65 @@ const PersonalBookList = (props) => {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.get(`/api/v1/books?q=${encodeURIComponent(searchTerm)}`);
-      if (response.status === 200) {
-        setBooks(response.data.books);
-          const volumeID = response.data.volumeID;
-          await axios.post('/api/v1/books', { volumeID } );
-      } else {
-        console.error('Error in search:', response.data.error);
-      }
-    } catch (error) {
-      console.error('Error in search:', error);
-    }
-  };
-  
-  const handleInputChange = (e) => { 
-    setSearchTerm(e.target.value);
-  };
-
-  const getBooks = async () => {
-    try {
-      const response = await axios.get('/api/v1/books/library');
-      if (response.status === 200) {
-        const books = response.data.books;
-        for (const book of books) {
-          const volumeID = book.volumeID;
-          console.log(volumeID);
-          const bookResponse = await axios.get(`/api/v1/books/${volumeID}`);
-          if (bookResponse.status === 200) {
-            const retrievedBook = bookResponse.data.book;
-            console.log(retrievedBook);
-            // Handle the retrieved book data as needed
-          } else {
-            console.error('Error in getting book:', bookResponse.data.error);
-          }
+        try {
+        const response = await axios.get(`/api/v1/books?q=${encodeURIComponent(searchTerm)}`);
+        if (response.status === 200) {
+            setBooks(response.data.books);
+            const data = response.data.books[0].volumeInfo;
+            await axios.post('/api/v1/books', { title: data.title, authors: data.authors, pageCount: data.pageCount, description: data.description, categories: data.categories, imageLinks: data.imageLinks});
+        } else {
+            console.error('Error in search:', response.data.error);
         }
-      } else {
-        console.error('Error in getting books:', response.data.error);
-      }
-    } catch (error) {
-      console.error('Error in getting books:', error);
-    }
-  };
+        } catch (error) {
+        console.error('Error in search:', error);
+        }
+    };
   
-  
+    const handleInputChange = (e) => { 
+        setSearchTerm(e.target.value);
+    };
 
-useEffect(() => {
-    getBooks();
-}, []);
+    const getBooks = async () => {
+        try {
+        const response = await axios.get('/api/v1/books/library');
+        if (response.status === 200) {
+            setBooks(response.data.books);
+        } else {
+            console.error('Error in search:', response.data.error);
+        }
+        } catch (error) {
+            console.error('Error in search:', error);
+        }
+    };
 
-  
+    useEffect(() => {
+        getBooks();
+    }, []);
 
-//   const mappedBooks = books.map((book) => {
-//     return <BookTile key={book.id} id={book.id} title={book.title} author={book.author} />;
-//   });
+    const mappedBooks = books.map((book) => {
+        return <BookTile 
+            key={book.id} 
+            id={book.id} 
+            title={book.title} 
+            authors={book.authors} 
+            pageCount={book.pageCount}
+            categories={book.categories}
+            description={book.description}
+            smallImage={book.smallImage}
+            largeImage={book.largeImage}
+            />;
+    });
 
-  return (
-    <div className="primary home-box grid-x">
-      <h1 className="cell">Book Shelf</h1>
-      <form onSubmit={handleSearch}>
-        <input type="text" value={searchTerm} onChange={handleInputChange} />
-        <button type="submit">Search</button>
-      </form>
-    </div>
-  );
+    return (
+        <div className="primary home-box grid-x">
+        <h1 className="cell">Book Shelf</h1>
+        <form className="cell" onSubmit={handleSearch}>
+            <input type="text" value={searchTerm} onChange={handleInputChange} />
+            <button type="submit">Search</button>
+        </form>
+            {mappedBooks}
+        </div>
+    );
 };
 
 export default PersonalBookList;
