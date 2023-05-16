@@ -48,12 +48,9 @@ const PersonalBookList = (props) => {
             key={book.id} 
             id={book.id} 
             title={book.title} 
-            authors={book.authors} 
-            pageCount={book.pageCount}
+            authors={book.authors}
             categories={book.categories}
-            description={book.description}
             smallImage={book.smallImage}
-            largeImage={book.largeImage}
             />;
     });
 

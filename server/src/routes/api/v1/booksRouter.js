@@ -49,4 +49,15 @@ booksRouter.post('/', async (req, res) => {
   }
 });
 
+booksRouter.get('/:id', async (req, res) => {
+  const bookId = req.params.id;
+  try {
+    const book = await GoogleBook.query().findById(bookId);
+    return res.status(200).json({ book });
+  } catch (error) {
+    console.error('Error in getting book:', error);
+    return res.status(500).json({ error: 'An error occurred while getting the book.' });
+  }
+});
+
 export default booksRouter;
