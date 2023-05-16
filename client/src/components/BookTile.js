@@ -1,14 +1,27 @@
 import React from 'react';
 
 const BookTile = ({ title, description, categories, authors, pageCount, smallImage}) => {
-  return (
-    <div className='book-tile home-box small-5 primary'>
-      <h2>{title}</h2>
-      <p>Authors: {authors}</p>
-      <p>Category: {categories}</p>
-      <img src={smallImage} />
-    </div>
-  );
+    let titleInfo
+    if (title) {
+        titleInfo = <h2>{title}</h2>
+    }
+    let categoryInfo
+    if (categories) {
+        categoryInfo = <p>Category: {categories}</p>
+    }
+    let authorInfo
+    if (authors) {
+        authorInfo = <h4>Authors: {authors}</h4>
+    }
+
+    return (
+        <div className='book-tile home-box small-5 primary'>
+        {titleInfo}
+        {authorInfo}
+        {categoryInfo}
+        <img src={smallImage} className='tile-image'/>
+        </div>
+    );
 };
 
 export default BookTile;
