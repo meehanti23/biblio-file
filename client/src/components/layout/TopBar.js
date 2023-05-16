@@ -39,6 +39,9 @@ const TopBar = ({ user }) => {
           <li className="menu-text home">
             <Link to="/books">All Books</Link>
           </li>
+          <li className="menu-text home">
+            <Link to="/trending">Trending Books</Link>
+          </li>
         </ul>
       </div>
       <div className="top-bar-right">

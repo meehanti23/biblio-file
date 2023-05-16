@@ -11,6 +11,7 @@ import Homepage from "./Homepage";
 import PersonalBookList from "./PersonalBookList";
 import AllBooks from "./AllBooks";
 import BookShowPage from "./BookShowPage";
+import GoodreadsTrending from "./GoodreadsTrending";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -37,6 +38,7 @@ const App = (props) => {
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <Route exact path="/bookshelf" component={PersonalBookList} />
         <Route exact path="/books" component={AllBooks} />
+        <Route exact path="/trending" component={GoodreadsTrending} />
       </Switch>
     </Router>
   );
