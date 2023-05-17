@@ -68,6 +68,7 @@ body::before {
   background-color: #742419;
   color:#ec8f00;
   font-weight: bold;
+  position: relative;
 }
 
 .top-bar {
@@ -215,4 +216,29 @@ h2 {
 .close {
   width: 7%;
   height: 7%;
+}
+
+.trash-icon {
+  width: 7%;
+  height: 7%;
+}
+
+.trash-icon:hover {
+  cursor: pointer;
+  color: #517174;
+}
+
+.remove-book {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: .5em;
+  right: .5em;
+}
+
+.add-book-button {
+  color: #4E1D04;
+  border-radius: 1em;
+  background-color: #DCBE87;
+  font-weight: 900;
 }
