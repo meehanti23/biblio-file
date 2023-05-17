@@ -70,9 +70,11 @@ const PersonalBookList = (props) => {
   return (
     <div className="primary home-box grid-x">
       <h1 className="cell">Book Shelf</h1>
-      <button className="cell" onClick={() => setShowModal(true)}>
-        Add a Book
-      </button>
+      <div className="add-book-wrapper cell">
+        <button className="button add-book-button" onClick={() => setShowModal(true)}>
+          Add a Book
+        </button>
+      </div>
       <Modal
         isOpen={showModal}
         onRequestClose={() => setShowModal(false)}
