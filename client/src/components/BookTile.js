@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const BookTile = ({ title, authors, smallImage, userEmail, id }) => {
+const BookTile = ({ title, authors, smallImage, username, id }) => {
     let titleInfo
     if (title) {
         titleInfo = <h2>{title}</h2>
@@ -17,7 +17,7 @@ const BookTile = ({ title, authors, smallImage, userEmail, id }) => {
             <div className="book-name"><Link to={`/books/${id}`}>{titleInfo}</Link></div>
             {authorInfo}
             <img src={smallImage} className='tile-thumbnail'/>
-            <h5>Submitted By: {userEmail}</h5>
+            <h5>Submitted By: {username}</h5>
         </div>
     );
 };

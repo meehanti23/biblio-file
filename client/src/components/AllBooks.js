@@ -29,7 +29,7 @@ const AllBooks = (props) => {
             title={book.title} 
             authors={book.authors} 
             smallImage={book.smallImage}
-            userEmail={book.userEmail}
+            username={book.username}
             />;
     });
 
