@@ -26,7 +26,7 @@ booksRouter.get('/', async (req, res) => {
 
 booksRouter.get('/library', async (req, res) => {
     try {
-        const books = await GoogleBook.query();
+        const books = await GoogleBook.query().orderBy('createdAt', 'desc');
         return res.status(200).json({ books });
     } catch (error) {
         console.error('Error in getting books:', error);
@@ -41,7 +41,7 @@ booksRouter.post('/', async (req, res) => {
     const categories = categoryArray.join(', ');
     const authorsArray = Array.isArray(body.authors) ? body.authors : [body.authors];
     const authors = authorsArray.join(', ');
-    const insertedBook = await GoogleBook.query().insert({ title: body.title, authors: authors, pageCount: body.pageCount, description: body.description, categories: categories, smallImage: body.imageLinks.smallThumbnail, largeImage: body.imageLinks.thumbnail, userId: req.user.id, userEmail: req.user.email });
+    const insertedBook = await GoogleBook.query().insert({ title: body.title, authors: authors, pageCount: body.pageCount, description: body.description, categories: categories, smallImage: body.imageLinks.smallThumbnail, largeImage: body.imageLinks.thumbnail, userId: req.user.id, username: req.user.username });
     return res.status(200).json({ book: insertedBook });
   } catch (error) {
     console.error('Error in inserting book:', error);

@@ -10,13 +10,20 @@ const SignInForm = () => {
 
   const validateInput = (payload) => {
     setErrors({});
-    const { email, password } = payload;
+    const { username, email, password } = payload;
     const emailRegexp = config.validation.email.regexp.emailRegex;
     let newErrors = {};
     if (!email.match(emailRegexp)) {
       newErrors = {
         ...newErrors,
         email: "is invalid",
+      };
+    }
+
+    if (username.trim() === "") {
+      newErrors = {
+        ...newErrors,
+        username: "is required",
       };
     }
 
@@ -80,6 +87,13 @@ const SignInForm = () => {
       <h1>Sign In</h1>
       {credentialsErrors ? <p className="callout alert">{credentialsErrors}</p> : null}
       <form onSubmit={onSubmit}>
+        <div>
+          <label>
+            Username
+            <input type="text" name="username" value={userPayload.username} onChange={onInputChange} />
+            <FormError error={errors.username} />
+          </label>
+        </div>
         <div>
           <label>
             Email
