@@ -86,7 +86,7 @@ const PersonalBookList = (props) => {
         />
         <form onSubmit={handleSearch} className='search-bar'>
           <input type="text" value={searchTerm} onChange={handleInputChange} />
-          <button type="submit" className='search-button'>Search Google Books</button>
+          <button type="submit" onSubmit={() => setShowModal(false)} className='search-button'>Search Google Books</button>
         </form>
         <div className="search-criteria">
             <h3>Search By Book Title</h3>

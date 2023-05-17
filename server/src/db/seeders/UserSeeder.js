@@ -4,16 +4,29 @@ class UserSeeder {
     static async seed() {
         const usersData = [
             {
-                email: "johnDoe22@email.com",
-                password: "12345"
+                username: "Gandalf",
+                email: "gandalf@thegrey.com",
+                password: "1ring"
             },
             { 
-                email: "sallyseashell@email.com", 
-                password: "54321" 
+                username: "Frodo",
+                email: "frodo@baggins.com", 
+                password: "1ring" 
             },
             { 
-                email: "Mary301@email.com", 
-                password: "24689" 
+                username: "Samwise",
+                email: "samwise@gamgee.com", 
+                password: "1ring" 
+            },
+            {
+                username: "Sauron",
+                email: "sauron@onering.com",
+                password: "1ring"
+            },
+            {
+                username: "Gollum",
+                email: "gollum@precious.com",
+                password: "1ring"
             }
         ]
         for (const singleUserData of usersData) {
