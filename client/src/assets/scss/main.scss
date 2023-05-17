@@ -176,3 +176,43 @@ h2 {
   color: #517174;
   font-size: 1rem;
 }
+
+.modal-box {
+  width: 60%;
+  height: 40%;
+  margin: auto;
+  margin-top: 20%;
+  background-color: #DCBE87;
+  border: 5px solid #4E1D04;
+  border-radius: 1em;
+}
+
+.search-bar {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1em;
+  text-align: center;
+}
+
+.search-criteria {
+  color: #4E1D04;
+  text-align: center;
+  margin-top: 1em;
+  height: 40%
+}
+
+.search-button {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  background-color: #4E1D04;
+  color: #DCBE87;
+  border: 2px solid #4E1D04;
+  border-radius: .2em;
+}
+
+.close {
+  width: 7%;
+  height: 7%;
+}
