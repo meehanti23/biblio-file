@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PersonalBookTile from './PersonalBookTile';
 import axios from 'axios';
+import translateServerErrors from '../services/translateServerErrors';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faBookOpen } from '@fortawesome/free-solid-svg-icons';
@@ -14,21 +15,14 @@ const PersonalBookList = (props) => {
     try {
       const response = await axios.get(`/api/v1/books?q=${encodeURIComponent(searchTerm)}`);
       if (response.status === 200) {
-        setBooks(response.data.books);
-        const data = response.data.books[0].volumeInfo;
-        await axios.post('/api/v1/books', {
-          title: data.title,
-          authors: data.authors,
-          pageCount: data.pageCount,
-          description: data.description,
-          categories: data.categories,
-          imageLinks: data.imageLinks
-        });
+        const book = response.data.book;
+        books.push(book)
+        setShowModal(false);
+        window.location.reload(false);
       } else {
-        console.error('Error in search:', response.data.error);
+        translateServerErrors(response.data.errors);
       }
     } catch (error) {
-      alert('Book not found or input invalid. Please try again.');
       setShowModal(true);
       console.error('Error in search:', error);
     }
@@ -71,7 +65,6 @@ const PersonalBookList = (props) => {
   const handleSearchAndClose = (event) => {
     handleSearch()
     setShowModal(false)
-    // window.location.reload(false)
   }
 
   return (

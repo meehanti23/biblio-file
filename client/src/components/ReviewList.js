@@ -11,6 +11,7 @@ const ReviewList = (props) => {
                 reviewBody={review.reviewBody}
                 username={review.username}
                 createdAt={review.createdAt}
+                currentUser={props.currentUser}
             />
         )
     })

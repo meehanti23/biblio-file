@@ -95,7 +95,7 @@ const BookShowPage = (props) => {
             <p className="description">{book.description}</p>
             <img className="show-image" src={book.largeImage} alt={book.title} />
             {ReviewFormSection}
-            <ReviewList reviews={reviews} saladId={book.id} />
+            <ReviewList reviews={reviews} saladId={book.id} currentUser={props.user}/>
         </div>
     )
 }

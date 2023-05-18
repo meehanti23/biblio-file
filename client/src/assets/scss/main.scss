@@ -248,7 +248,7 @@ h2 {
   border: 5px solid #4E1D04;
   border-radius: 1em;
   height: 100%;
-  margin-top: 18%;
+  margin-top: 20%;
 }
 
 .review-tile {
@@ -283,6 +283,11 @@ h2 {
   font-size: 4em;
 }
 
+.review-icons {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .review-trash-icon {
   width: 4%;
   height: 4%;
@@ -290,6 +295,19 @@ h2 {
 }
 
 .review-trash-icon:hover {
+  cursor: pointer;
+  color: #517174;
+}
+
+.review-edit-icon {
+  width: 4%;
+  height: 4%;
+  margin-bottom: .8em;
+  margin-right: .7em;
+  margin-left: .7em;
+}
+
+.review-edit-icon:hover {
   cursor: pointer;
   color: #517174;
 }

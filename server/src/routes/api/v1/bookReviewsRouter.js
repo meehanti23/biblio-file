@@ -25,7 +25,6 @@ bookReviewsRouter.post('/', async (req, res) => {
 });
 
 bookReviewsRouter.delete('/:id', async (req, res) => {
-    console.log("req.paramssssss", req.params)
     const reviewId = req.params.id;
     const userId = req.user.id;
     try {
@@ -39,6 +38,25 @@ bookReviewsRouter.delete('/:id', async (req, res) => {
     } catch (error) {
         console.error('Error in deleting review:', error);
         return res.status(500).json({ error: 'An error occurred while deleting the review.' });
+    }
+});
+
+bookReviewsRouter.patch('/:id', async (req, res) => {
+    const reviewId = req.params.id;
+    const userId = req.user.id;
+    const reviewBody = req.body;
+    try {
+    const reviewToEdit = await Review.query().findById(reviewId);
+        if (userId === reviewToEdit.userId) {
+            const updateReview = await Review.query().patchAndFetchById(reviewId, reviewBody);
+            return res.status(200).json({ review: updateReview });
+        } else {
+            return res.status(401).json({ error: 'You are not authorized to edit this review.' });
+        }
+    } catch(error) {
+        if (error instanceof ValidationError) {
+            return res.status(422).json({ errors: error.data });
+        }
     }
 });
 
