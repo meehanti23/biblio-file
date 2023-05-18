@@ -11,6 +11,7 @@ exports.up = async (knex) => {
         table.string('reviewBody').notNullable()
         table.bigInteger('bookId').notNullable().unsigned().index().references('google_books.id')
         table.bigInteger('userId').notNullable().unsigned().index().references('users.id')
+        table.string('username').notNullable()
         table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now());
         table.timestamp("updatedAt").notNullable().defaultTo(knex.fn.now());
     })

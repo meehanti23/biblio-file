@@ -9,8 +9,8 @@ bookReviewsRouter.post('/', async (req, res) => {
     const reviewBody = req.body;
     const bookId = req.params.id;
     const reviewer = req.user.id;
-    console.log('reviewer!!!!', req.params)
-    const formDataWithId = { ...reviewBody, bookId, userId: reviewer };
+    const username = req.user.username;
+    const formDataWithId = { ...reviewBody, bookId, userId: reviewer, username};
     try {
         const insertedReview = await Review.query().insertAndFetch(formDataWithId);
         insertedReview.user = reviewer
@@ -21,6 +21,24 @@ bookReviewsRouter.post('/', async (req, res) => {
         }
         console.error('Error in inserting review:', error);
         return res.status(500).json({ error: 'An error occurred while inserting the review.' });
+    }
+});
+
+bookReviewsRouter.delete('/:id', async (req, res) => {
+    console.log("req.paramssssss", req.params)
+    const reviewId = req.params.id;
+    const userId = req.user.id;
+    try {
+        const reviewToDelete = await Review.query().findById(reviewId);
+        if (reviewToDelete.userId === userId) {
+            await Review.query().deleteById(reviewId);
+            return res.status(200).json({ message: 'Review deleted successfully.' });
+        } else {
+            return res.status(401).json({ error: 'You are not authorized to delete this review.' });
+        }
+    } catch (error) {
+        console.error('Error in deleting review:', error);
+        return res.status(500).json({ error: 'An error occurred while deleting the review.' });
     }
 });
 

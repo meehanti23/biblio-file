@@ -26,7 +26,6 @@ goodreadsTrendingRouter.get("/", async (req, res) => {
                 image: $image.attr('src'),
                 link: $link.attr('href'),
             };
-            console.log(repo.image)
             repoData.push(repo);
         });
         res.status(200).set({ 'content-type': 'application/json' }).json({ repos: repoData });

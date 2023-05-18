@@ -3,15 +3,14 @@ import PersonalBookTile from './PersonalBookTile';
 import axios from 'axios';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faBookOpen } from '@fortawesome/free-solid-svg-icons';
 
 const PersonalBookList = (props) => {
   const [books, setBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [showModal, setShowModal] = useState(false);
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
+  const handleSearch = async () => {
     try {
       const response = await axios.get(`/api/v1/books?q=${encodeURIComponent(searchTerm)}`);
       if (response.status === 200) {
@@ -29,6 +28,8 @@ const PersonalBookList = (props) => {
         console.error('Error in search:', response.data.error);
       }
     } catch (error) {
+      alert('Book not found or input invalid. Please try again.');
+      setShowModal(true);
       console.error('Error in search:', error);
     }
   };
@@ -67,9 +68,19 @@ const PersonalBookList = (props) => {
     );
   });
 
+  const handleSearchAndClose = (event) => {
+    handleSearch()
+    setShowModal(false)
+    // window.location.reload(false)
+  }
+
   return (
     <div className="primary home-box grid-x">
-      <h1 className="cell">Book Shelf</h1>
+      <h1 className="cell page-title">
+        <FontAwesomeIcon className="book-icon" icon={faBookOpen} />
+        Book Shelf
+        <FontAwesomeIcon className="book-icon" icon={faBookOpen} />
+        </h1>
       <div className="add-book-wrapper cell">
         <button className="button add-book-button" onClick={() => setShowModal(true)}>
           Add a Book
@@ -86,9 +97,9 @@ const PersonalBookList = (props) => {
             icon={faCircleXmark}
             onClick={() => setShowModal(false)}
         />
-        <form onSubmit={handleSearch} className='search-bar'>
+        <form onSubmit={handleSearchAndClose} className='search-bar'>
           <input type="text" value={searchTerm} onChange={handleInputChange} />
-          <button type="submit" onSubmit={() => setShowModal(false)} className='search-button'>Search Google Books</button>
+          <button type="submit" className='search-button'>Search Google Books</button>
         </form>
         <div className="search-criteria">
             <h3>Search By Book Title</h3>
