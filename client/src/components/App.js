@@ -34,7 +34,9 @@ const App = (props) => {
       <Switch>
         <Route exact path="/" component={Homepage}/>
         <Route exact path="/users/new" component={RegistrationForm} />
-        <Route exact path="/books/:id" component={BookShowPage} />
+        <Route exact path="/books/:id" 
+          render={(props) => <BookShowPage {...props} user={currentUser} />}
+        />
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <Route exact path="/bookshelf" component={PersonalBookList} />
         <Route exact path="/books" component={AllBooks} />
