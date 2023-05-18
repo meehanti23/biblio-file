@@ -1,6 +1,7 @@
 import express from 'express';
 import { GoogleBook, User } from '../../../models/index.js';
 import axios from 'axios';
+import bookReviewsRouter from './bookReviewsRouter.js';
 
 const booksRouter = express.Router();
 
@@ -53,6 +54,12 @@ booksRouter.get('/:id', async (req, res) => {
   const bookId = req.params.id;
   try {
     const book = await GoogleBook.query().findById(bookId);
+    const reviews = await book.$relatedQuery('reviews');
+    const reviewsWithUsers = await Promise.all(reviews.map(async review => {
+      review.user = await review.$relatedQuery('user');
+      return review;
+    }));
+    book.reviews = reviewsWithUsers;
     return res.status(200).json({ book });
   } catch (error) {
     console.error('Error in getting book:', error);
@@ -76,5 +83,7 @@ booksRouter.delete('/:id', async (req, res) => {
     return res.status(500).json({ error: 'An error occurred while deleting the book.' });
   }
 });
+
+booksRouter.use("/:id/reviews", bookReviewsRouter);
 
 export default booksRouter;

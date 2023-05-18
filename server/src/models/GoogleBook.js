@@ -6,7 +6,7 @@ class GoogleBook extends Model {
   }
 
   static get relationMappings() {
-    const { User } = require('./index.js');
+    const { User, Review } = require('./index.js');
 
     return {
       user: {
@@ -17,6 +17,14 @@ class GoogleBook extends Model {
           to: 'users.id',
         },
       },
+      reviews: {
+        relation: Model.HasManyRelation,
+        modelClass: Review,
+        join: {
+          from: 'google_books.id',
+          to: 'reviews.bookId'
+        }
+      }
     };
   }
 
