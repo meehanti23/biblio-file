@@ -26,10 +26,10 @@ const ReviewForm = ({ postReview, errors }) => {
     }
 
     return (
-        <div className="grid-container">
+        <div className="grid-container review-form">
             <div className="grid-x grid-margin-x">
                 <div className="cell small-12">
-                    <h1>Write a Review</h1>
+                    <h1>Thoughts?</h1>
                     <ErrorList errors={errors} />
                     <form onSubmit={handleSubmit}>
                         <label> 

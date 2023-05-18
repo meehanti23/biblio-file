@@ -242,3 +242,54 @@ h2 {
   background-color: #DCBE87;
   font-weight: 900;
 }
+
+.review-form {
+  background-color: #DCBE87;
+  border: 5px solid #4E1D04;
+  border-radius: 1em;
+  height: 100%;
+  margin-top: 18%;
+}
+
+.review-tile {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #742419;
+  color: #ec8f00;
+  border: 5px solid #002907;
+  border-radius: 1em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.review-list {
+  background-color:#DCBE87;
+  margin-top: 2em;
+  width: 70%;
+  border: 5px solid #420e07;
+  border-radius: 1em;
+}
+
+.book-icon {
+  color: #742419;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+}
+
+.page-title {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 900;
+  font-size: 4em;
+}
+
+.review-trash-icon {
+  width: 4%;
+  height: 4%;
+  margin-bottom: .8em;
+}
+
+.review-trash-icon:hover {
+  cursor: pointer;
+  color: #517174;
+}
