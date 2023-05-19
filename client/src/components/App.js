@@ -13,6 +13,7 @@ import AllBooks from "./AllBooks";
 import BookShowPage from "./BookShowPage";
 import GoodreadsTrending from "./GoodreadsTrending";
 import ReviewEditForm from "./ReviewEditForm";
+import BookTrivia from "./BookTrivia";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -45,6 +46,7 @@ const App = (props) => {
         <Route exact path="/bookshelf" component={PersonalBookList} />
         <Route exact path="/books" component={AllBooks} />
         <Route exact path="/trending" component={GoodreadsTrending} />
+        <Route exact path="/trivia" component={BookTrivia} />
       </Switch>
     </Router>
   );
