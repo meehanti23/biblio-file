@@ -37,7 +37,7 @@ const GoodreadsTrending = (props) => {
 
     return (
         <div className="primary home-box grid-x container">
-            <h1 className="cell">GoodReads Trending List:</h1>
+            <h1 className="cell page-title">GoodReads Trending List:</h1>
             <ul className="trending-list">
                 {trendingList}
             </ul>

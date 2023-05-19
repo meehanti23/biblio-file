@@ -35,7 +35,7 @@ const AllBooks = (props) => {
 
     return (
         <div className="primary home-box grid-x container">
-            <h1 className="cell">What is Everyone Reading?</h1>
+            <h1 className="cell page-title">What is Everyone Reading?</h1>
             {mappedBooks}
         </div>
     )
