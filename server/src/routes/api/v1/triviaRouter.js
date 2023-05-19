@@ -7,7 +7,7 @@ const triviaRouter = new express.Router();
 triviaRouter.get('/', async (req, res) => {
   try {
     const { amount } = req.query;
-    const response = await axios.get(`https://opentdb.com/api.php?category=10&amount=${amount}`, {
+    const response = await axios.get(`https://opentdb.com/api.php?category=10&amount=${amount}&type=multiple`, {
     });
     res.json(response.data.results)
   } catch (error) {
