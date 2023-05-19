@@ -19,10 +19,10 @@ const GoodreadsTrending = (props) => {
         }
     };
 
-    useEffect(() => {  
+    useEffect(() => {
         getTrending();
-    }, []);
-
+    })
+    
     const trendingList = trending.slice(0, 30).map((repo) => {
         return (
             <TrendingTile
