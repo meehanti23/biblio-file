@@ -57,6 +57,19 @@ const BookTrivia = () => {
     />
   ));
 
+  let calculateScoreButton
+  if (selectedAnswers.includes(null) || triviaData.length === 0) {
+    calculateScoreButton = ''
+  } else {
+    calculateScoreButton = (
+      <div className='score-button'>
+        <button className='calculate-score' onClick={calculateScore}>
+          Calculate Score
+        </button>
+      </div>
+    )
+  }
+
   return (
     <div className='trivia-block'>
       <h1 className='page-title'>Book Trivia</h1>
@@ -78,14 +91,10 @@ const BookTrivia = () => {
         </div>
       </form>
       <ul className='trivia-list'>{triviaList}</ul>
-      <div className='score-button'>
-        <button className='calculate-score' onClick={calculateScore} disabled={selectedAnswers.includes(null)}>
-          Calculate Score
-        </button>
-      </div>
+        {calculateScoreButton}
       {score !== null && (
-        <div className="score">
-          <h3>Your Score: {score}/{triviaData.length}</h3>
+        <div>
+          <h3 className="score">Your Score: {score}/{triviaData.length}</h3>
         </div>
       )}
     </div>
