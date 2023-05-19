@@ -29,18 +29,17 @@ const ReviewForm = ({ postReview, errors }) => {
         <div className="grid-container review-form">
             <div className="grid-x grid-margin-x">
                 <div className="cell small-12">
-                    <h1>Thoughts?</h1>
+                    <h1><b>Thoughts?</b></h1>
                     <ErrorList errors={errors} />
                     <form onSubmit={handleSubmit}>
-                        <label> 
-                            Add Comment:
-                            <input
-                                name="reviewBody"
-                                type="text"
-                                onChange={handleInputChange}
-                                value={newReview.reviewBody}
-                            />
-                        </label>
+                        <textarea
+                            name="reviewBody"
+                            id="reviewBody"
+                            placeholder="Write your review here..."
+                            value={newReview.reviewBody}
+                            onChange={handleInputChange}
+                            rows={4}
+                        />
                         <div className="button-group">
                             <input className="button" type="submit" value="Submit" />
                         </div>

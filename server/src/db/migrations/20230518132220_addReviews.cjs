@@ -8,7 +8,7 @@
 exports.up = async (knex) => {
     return knex.schema.createTable('reviews', (table) => {
         table.bigIncrements('id').primary();
-        table.string('reviewBody').notNullable()
+        table.text('reviewBody').notNullable()
         table.bigInteger('bookId').notNullable().unsigned().index().references('google_books.id')
         table.bigInteger('userId').notNullable().unsigned().index().references('users.id')
         table.string('username').notNullable()

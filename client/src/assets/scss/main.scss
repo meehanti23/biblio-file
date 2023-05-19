@@ -244,11 +244,12 @@ h2 {
 }
 
 .review-form {
-  background-color: #DCBE87;
+  background-color: #898055;
   border: 5px solid #4E1D04;
+  color: #420e07;
   border-radius: 1em;
   height: 100%;
-  margin-top: 20%;
+  margin-top: 15%;
 }
 
 .review-tile {
@@ -264,8 +265,10 @@ h2 {
 }
 
 .review-list {
-  background-color:#DCBE87;
+  background-color:#898055;
+  color: #420e07;
   margin-top: 2em;
+  margin-bottom: 2em;
   width: 70%;
   border: 5px solid #420e07;
   border-radius: 1em;
@@ -310,4 +313,47 @@ h2 {
 .review-edit-icon:hover {
   cursor: pointer;
   color: #517174;
+}
+
+.edit-form {
+  background-color: #DCBE87;
+  border: 5px solid #4E1D04;
+  border-radius: 1em;
+  height: 100%;
+  margin-top: 10%;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  position: flex;
+}
+
+.input-field {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.edit-submit {
+  background-color: #4E1D04;
+  color: #DCBE87;
+  border: 2px solid #4E1D04;
+  border-radius: .2em;
+}
+
+.edit-form-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1em;
+}
+
+.show-box {
+  border: 5px solid #420e07;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  background-color: #bfbdb0;
+  border-radius: 10px;
+  margin-top: 3em;
+  text-align: center;
 }

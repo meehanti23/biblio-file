@@ -22,8 +22,10 @@ const SaladEditForm = (props) => {
         patchReview();
     };
 
+    const { bookId } = props.match.params;
+    
     if (shouldRedirect) {
-        return <Redirect to={`/books/${bookId}/reviews/${reviewId}`} />;
+        return <Redirect to={`/books/${bookId}`} />;
     }
 
     const patchReview = async () => {
@@ -45,30 +47,33 @@ const SaladEditForm = (props) => {
             }
             else {
                 const responseBody = await response.json();
-                const updatedReview = responseBody.reviewBody;
+                const updatedReview = responseBody.review;
                 setNewReviewBody(updatedReview);
-                shouldRedirect({ status: true, reviewId: reviewId });
+                setShouldRedirect({ status: true, bookId });
             }
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`);
         }
     };
 
-    return(
-        <>
-            <h1>Edit Form</h1>
+    return (
+        <div className="edit-form">
+            <h3>Edit your Comment Here:</h3>
             <ErrorList errors={errors} />
             <form onSubmit={handleSubmit}>
-                <label>Review Body:</label>
-                <input
+                <textarea
+                    className="input-field"
                     name="reviewBody"
-                    type="text"
                     onChange={handleInputChange}
                     value={newReviewBody.reviewBody}
+                    rows={3}
+                    cols={50}
                 />
-                <input className='button' type="submit" value="Submit" />
+                <div className = "edit-form-buttons">  
+                    <input className='button edit-submit' type="submit" value="Submit" />
+                </div>
             </form>
-        </>
+        </div>
     )
 }
 

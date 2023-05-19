@@ -87,7 +87,7 @@ const BookShowPage = (props) => {
     }
 
     return (
-        <div className="primary home-box grid-x container">
+        <div className="primary show-box grid-x container">
             <h1 className="cell show-text">{book.title}</h1>
             <h3 className="cell show-text">By: {book.authors}</h3>
             <h4 className="cell show-text">Genre: {book.categories}</h4>
