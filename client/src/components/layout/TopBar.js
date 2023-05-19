@@ -42,6 +42,9 @@ const TopBar = ({ user }) => {
           <li className="menu-text home">
             <Link to="/trending">Trending Books</Link>
           </li>
+          <li className="menu-text home">
+            <Link to="/trivia">Book Trivia</Link>
+          </li>
         </ul>
       </div>
       <div className="top-bar-right">
