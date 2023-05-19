@@ -5,12 +5,15 @@ import TriviaTile from './TriviaTile';
 const BookTrivia = () => {
   const [triviaData, setTriviaData] = useState([]);
   const [numQuestions, setNumQuestions] = useState(10);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
+  const [score, setScore] = useState(null);
 
   const fetchTriviaData = async () => {
     try {
-      const response = await axios.get(`/api/v1/trivia?amount=${encodeURIComponent(numQuestions)}`, {
-      });
+      const response = await axios.get(`/api/v1/trivia?amount=${encodeURIComponent(numQuestions)}`);
       setTriviaData(response.data);
+      setSelectedAnswers(new Array(response.data.length).fill(null));
+      setScore(null);
     } catch (error) {
       console.error('Error fetching trivia:', error);
     }
@@ -18,22 +21,41 @@ const BookTrivia = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    fetchTriviaData();
+    fetchTriviaData()
   };
 
   const handleNumQuestionsChange = (event) => {
     setNumQuestions(event.target.value);
   };
 
-  const triviaList = triviaData.map((trivia, index) => {
-    return (
-        <TriviaTile
-            key={index}
-            question={trivia.question}
-            correctAnswer={trivia.correct_answer}
-        />
-    )
-    });
+  const handleAnswerChange = (index, answer) => {
+    const updatedSelectedAnswers = [...selectedAnswers];
+    updatedSelectedAnswers[index] = answer;
+    setSelectedAnswers(updatedSelectedAnswers);
+  };
+
+  const calculateScore = () => {
+    const calculatedScore = selectedAnswers.reduce((acc, selectedAnswer, index) => {
+      const trivia = triviaData[index];
+      if (selectedAnswer === trivia.correct_answer) {
+        return acc + 1;
+      }
+      return acc;
+    }, 0);
+    setScore(calculatedScore);
+  };
+
+  const triviaList = triviaData.map((trivia, index) => (
+    <TriviaTile
+      key={index}
+      index={index}
+      question={trivia.question}
+      correctAnswer={trivia.correct_answer}
+      incorrectAnswers={trivia.incorrect_answers}
+      selectedAnswer={selectedAnswers[index]}
+      onAnswerChange={handleAnswerChange}
+    />
+  ));
 
   return (
     <div className='trivia-block'>
@@ -52,10 +74,20 @@ const BookTrivia = () => {
           <span>{numQuestions}</span>
         </label>
         <div className='trivia-button'>
-            <button className="triva-button" type="submit">Get Trivia</button>
+          <button className="triva-button" type="submit">Get Trivia</button>
         </div>
       </form>
       <ul className='trivia-list'>{triviaList}</ul>
+      <div className='score-button'>
+        <button className='calculate-score' onClick={calculateScore} disabled={selectedAnswers.includes(null)}>
+          Calculate Score
+        </button>
+      </div>
+      {score !== null && (
+        <div className="score">
+          <h3>Your Score: {score}/{triviaData.length}</h3>
+        </div>
+      )}
     </div>
   );
 };
