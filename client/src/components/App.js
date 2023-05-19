@@ -12,6 +12,7 @@ import PersonalBookList from "./PersonalBookList";
 import AllBooks from "./AllBooks";
 import BookShowPage from "./BookShowPage";
 import GoodreadsTrending from "./GoodreadsTrending";
+import ReviewEditForm from "./ReviewEditForm";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -36,6 +37,9 @@ const App = (props) => {
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/books/:id" 
           render={(props) => <BookShowPage {...props} user={currentUser} />}
+        />
+        <Route exact path="/books/:bookId/reviews/:reviewId/edit"
+          render={(props) => <ReviewEditForm {...props} user={currentUser} />}
         />
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <Route exact path="/bookshelf" component={PersonalBookList} />
