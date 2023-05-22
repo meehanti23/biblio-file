@@ -5,6 +5,7 @@ import translateServerErrors from '../services/translateServerErrors';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import GenrePieChart from './GenrePieChart';
 
 const PersonalBookList = (props) => {
   const [books, setBooks] = useState([]);
@@ -102,6 +103,9 @@ const PersonalBookList = (props) => {
         </div>
       </Modal>
       {mappedBooks}
+      <div className="cell my-pretty-chart-container">
+        <GenrePieChart mappedBooks={mappedBooks}/>    
+      </div>
     </div>
   );
 };

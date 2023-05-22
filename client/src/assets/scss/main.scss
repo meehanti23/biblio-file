@@ -480,3 +480,29 @@ h2 {
   background-color: #4c9aff;
   cursor: pointer;
 }
+
+.my-pretty-chart-container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chart-wrapper {
+  margin-left: auto;
+  width: 90%;
+  margin-right: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border: 5px solid #420e07;
+  background-color: #DCBE87;
+  border-radius: 2em;
+}
+
+.chart-head {
+  color: #420e07;
+}
+
+.chart {
+  width: 100%;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
