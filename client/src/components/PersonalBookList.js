@@ -95,6 +95,14 @@ const PersonalBookList = (props) => {
           Add a Book
         </button>
       </div>
+      <div className='genre-button-wrapper'>
+        <button className="genre-button" onClick={toggleGenreChart}>
+          <FontAwesomeIcon className="pie-icon" icon={faChartPie} />
+          Your Genre Breakdown
+          <FontAwesomeIcon className="pie-icon" icon={faChartPie} />
+        </button>
+      </div>
+      {genreChart}
       <Modal
         isOpen={showModal}
         onRequestClose={() => setShowModal(false)}
@@ -118,14 +126,6 @@ const PersonalBookList = (props) => {
         </div>
       </Modal>
       {mappedBooks}
-      <div className='genre-button-wrapper'>
-        <button className="genre-button" onClick={toggleGenreChart}>
-          <FontAwesomeIcon className="pie-icon" icon={faChartPie} />
-          Your Genre Breakdown
-          <FontAwesomeIcon className="pie-icon" icon={faChartPie} />
-        </button>
-      </div>
-      {genreChart}
     </div>
   );
 };

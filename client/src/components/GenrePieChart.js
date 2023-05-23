@@ -3,6 +3,9 @@ import { Chart } from 'react-google-charts';
 
 const GenrePieChart = (props) => {
   const categoryList = props.mappedBooks.map((book) => {
+    if (book.props.categories === '') {
+      return 'No Category Listed';
+    }
     return book.props.categories;
   });
 
