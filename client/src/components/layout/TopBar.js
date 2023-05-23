@@ -4,18 +4,18 @@ import SignOutButton from "../authentication/SignOutButton";
 
 const TopBar = ({ user }) => {
   const unauthenticatedListItems = [
-    <li key="sign-in">
+    <li key="sign-in" className="button">
       <Link to="/user-sessions/new">Sign In</Link>
     </li>,
     <li key="sign-up">
-      <Link to="/users/new" className="button">
+      <Link to="/users/new" className="button button">
         Sign Up
       </Link>
     </li>,
   ];
 
   const authenticatedListItems = [
-    <li key="sign-out" className="menu-text menu">
+    <li key="sign-out" className="menu-text menu button">
       <SignOutButton />
     </li>,
   ];
@@ -32,6 +32,9 @@ const TopBar = ({ user }) => {
         <ul className="navbar-list">
           <li className="navbar-image">
             <img src='https://personal-library-bucket.s3.amazonaws.com/bookcase-shelf-book-discussion-club-library-shelf-58a65dea5748faadc143a6f7a080bde7.png' alt='top-bar-image' className="top-bar-books"/>
+          </li>
+          <li className="menu-text menu-name home">
+            Book Salad
           </li>
           <li className="menu-text home">
             <Link to="/">Home</Link>

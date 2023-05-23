@@ -103,6 +103,7 @@ a {
   font-weight: 900;
   font-size: 1.5rem;
   text-align: center;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .home {
@@ -241,6 +242,7 @@ h2 {
   border-radius: 1em;
   background-color: #DCBE87;
   font-weight: 900;
+  border: 2px solid #4E1D04;
 }
 
 .review-form {
@@ -454,7 +456,6 @@ h2 {
   outline: none;
 }
 
-/* CSS for the thumb */
 .num-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -511,13 +512,13 @@ h2 {
   background-color: #DCBE87;
   color: #420e07;
   border: 2px solid #4E1D04; 
-  width: 40%;
+  width: 50%;
   height: 4%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 2em;
   margin-bottom: 1em;
-  margin-top: 2em;
+  margin-top: 1em;
   font-size: 1.5em;
   font-weight: 900;
 }
@@ -536,6 +537,17 @@ h2 {
 }
 
 .pie-icon {
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.menu-text{
+  font-size: 1em;
+}
+
+.menu-name {
+  font-size: 1.8em;
+  font-weight: 900;
+  color:#742419;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
