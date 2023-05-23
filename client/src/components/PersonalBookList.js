@@ -4,13 +4,14 @@ import axios from 'axios';
 import translateServerErrors from '../services/translateServerErrors';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faBookOpen, faChartPie } from '@fortawesome/free-solid-svg-icons';
 import GenrePieChart from './GenrePieChart';
 
 const PersonalBookList = (props) => {
   const [books, setBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const [showGenreChart, setGenreShowChart] = useState(false);
 
   const handleSearch = async () => {
     try {
@@ -68,6 +69,20 @@ const PersonalBookList = (props) => {
     setShowModal(false)
   }
 
+  let genreChart = null;
+  
+  if (showGenreChart) {
+    genreChart = (
+      <div className="cell my-pretty-chart-container">
+        <GenrePieChart mappedBooks={mappedBooks}/>    
+      </div>
+    )
+  }
+
+  const toggleGenreChart = () => { 
+    setGenreShowChart(!showGenreChart)
+  }
+
   return (
     <div className="primary home-box grid-x">
       <h1 className="cell page-title">
@@ -103,9 +118,14 @@ const PersonalBookList = (props) => {
         </div>
       </Modal>
       {mappedBooks}
-      <div className="cell my-pretty-chart-container">
-        <GenrePieChart mappedBooks={mappedBooks}/>    
+      <div className='genre-button-wrapper'>
+        <button className="genre-button" onClick={toggleGenreChart}>
+          <FontAwesomeIcon className="pie-icon" icon={faChartPie} />
+          Your Genre Breakdown
+          <FontAwesomeIcon className="pie-icon" icon={faChartPie} />
+        </button>
       </div>
+      {genreChart}
     </div>
   );
 };
