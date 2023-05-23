@@ -506,3 +506,36 @@ h2 {
   margin-bottom: 1em;
   margin-top: 1em;
 }
+
+.genre-button {
+  background-color: #DCBE87;
+  color: #420e07;
+  border: 2px solid #4E1D04; 
+  width: 40%;
+  height: 4%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 2em;
+  margin-bottom: 1em;
+  margin-top: 2em;
+  font-size: 1.5em;
+  font-weight: 900;
+}
+
+.genre-button:hover {
+  cursor: pointer;
+  background-color: #ec8f00;
+  color: #4E1D04;
+}
+
+.genre-button-wrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+}
+
+.pie-icon {
+  margin-left: auto;
+  margin-right: auto;
+}
