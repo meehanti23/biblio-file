@@ -4,8 +4,11 @@ const TriviaTile = ({ index, question, correctAnswer, incorrectAnswers, selected
   const decodedQuestion = decodeEntities(question);
   const decodedCorrectAnswer = decodeEntities(correctAnswer);
   const incorrectList = incorrectAnswers.map(answer => decodeEntities(answer));
-  
-  const shuffledAnswerList = [...incorrectList, decodedCorrectAnswer].sort(() => Math.random() - 0.5);
+  const [shuffledAnswerList, setShuffledAnswerList] = useState([])
+
+  useEffect(() => {
+    setShuffledAnswerList([...incorrectList, decodedCorrectAnswer].sort(() => Math.random() - 0.5));
+  }, []);
   
   const handleAnswerChange = (event) => {
     const answer = event.target.value;

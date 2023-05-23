@@ -4,14 +4,16 @@ import axios from 'axios';
 import translateServerErrors from '../services/translateServerErrors';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faBookOpen, faChartPie } from '@fortawesome/free-solid-svg-icons';
-import GenrePieChart from './GenrePieChart';
+import { faCircleXmark, faBookOpen, faChartPie, faChartColumn } from '@fortawesome/free-solid-svg-icons';
+import GenrePieChart from './dataVisualization/GenrePieChart';
+import PageBarChart from './dataVisualization/PageBarChart';
 
 const PersonalBookList = (props) => {
   const [books, setBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [showGenreChart, setGenreShowChart] = useState(false);
+  const [showPageChart, setPageShowChart] = useState(false);
 
   const handleSearch = async () => {
     try {
@@ -38,7 +40,14 @@ const PersonalBookList = (props) => {
     try {
       const response = await axios.get('/api/v1/users');
       if (response.status === 200) {
-        setBooks(response.data.user.books);
+        const sortedBooks = response.data.user.books.sort((a, b) => {
+          const titleA = a.title.toLowerCase();
+          const titleB = b.title.toLowerCase();
+          if (titleA < titleB) return -1;
+          if (titleA > titleB) return 1;
+          return 0;
+        });
+        setBooks(sortedBooks);
       } else {
         console.error('Error in search:', response.data.error);
       }
@@ -60,10 +69,11 @@ const PersonalBookList = (props) => {
         authors={book.authors}
         categories={book.categories}
         smallImage={book.smallImage}
+        pageCount={book.pageCount}
       />
     );
   });
-
+  
   const handleSearchAndClose = (event) => {
     handleSearch()
     setShowModal(false)
@@ -83,6 +93,20 @@ const PersonalBookList = (props) => {
     setGenreShowChart(!showGenreChart)
   }
 
+  let pageChart = null;
+
+  if (showPageChart) {
+    pageChart = (
+      <div className="cell my-pretty-chart-container">
+        <PageBarChart mappedBooks={mappedBooks}/>
+      </div>
+    )
+  }
+
+  const togglePageChart = () => {
+    setPageShowChart(!showPageChart)
+  }
+
   return (
     <div className="primary home-box grid-x">
       <h1 className="cell page-title">
@@ -98,11 +122,19 @@ const PersonalBookList = (props) => {
       <div className='genre-button-wrapper'>
         <button className="genre-button" onClick={toggleGenreChart}>
           <FontAwesomeIcon className="pie-icon" icon={faChartPie} />
-          Your Genre Breakdown
+          Genre Breakdown
           <FontAwesomeIcon className="pie-icon" icon={faChartPie} />
         </button>
       </div>
       {genreChart}
+      <div className='genre-button-wrapper'>
+        <button className="genre-button" onClick={togglePageChart}>
+          <FontAwesomeIcon className="pie-icon" icon={faChartColumn} />
+          Page Count Breakdown
+          <FontAwesomeIcon className="pie-icon" icon={faChartColumn} />
+        </button>
+      </div>
+      {pageChart}
       <Modal
         isOpen={showModal}
         onRequestClose={() => setShowModal(false)}
