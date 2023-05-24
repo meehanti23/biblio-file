@@ -31,13 +31,10 @@ const TopBar = ({ user }) => {
       <div className="top-bar-left">
         <ul className="navbar-list">
           <li className="navbar-image">
-            <img src='https://personal-library-bucket.s3.amazonaws.com/bookcase-shelf-book-discussion-club-library-shelf-58a65dea5748faadc143a6f7a080bde7.png' alt='top-bar-image' className="top-bar-books"/>
+            <Link to="/"><img src='https://personal-library-bucket.s3.amazonaws.com/bookcase-shelf-book-discussion-club-library-shelf-58a65dea5748faadc143a6f7a080bde7.png' alt='top-bar-image' className="top-bar-books"/></Link>
           </li>
           <li className="menu-text menu-name home">
-            BiblioFile
-          </li>
-          <li className="menu-text home">
-            <Link to="/">Home</Link>
+            <Link to="/">BiblioFile</Link>
           </li>
           <li className="menu-text home">
             <Link to="/books">All Books</Link>
