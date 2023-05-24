@@ -9,7 +9,7 @@ const PersonalBookTile = ({ title, id, categories, authors, smallImage}) => {
 
     let titleInfo
     if (title) {
-        titleInfo = <h2>{title}</h2>
+        titleInfo = <h3 className='author-tile'>{title}</h3>
     }
     let categoryInfo
     if (categories) {
@@ -38,7 +38,7 @@ const PersonalBookTile = ({ title, id, categories, authors, smallImage}) => {
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`);
         }
-    };
+    }; 
 
     return (
         <div className='personal-tile home-box small-5 primary'>

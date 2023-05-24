@@ -34,7 +34,7 @@ const TopBar = ({ user }) => {
             <img src='https://personal-library-bucket.s3.amazonaws.com/bookcase-shelf-book-discussion-club-library-shelf-58a65dea5748faadc143a6f7a080bde7.png' alt='top-bar-image' className="top-bar-books"/>
           </li>
           <li className="menu-text menu-name home">
-            Book Salad
+            BiblioFile
           </li>
           <li className="menu-text home">
             <Link to="/">Home</Link>
