@@ -116,7 +116,7 @@ const PersonalBookList = (props) => {
         <FontAwesomeIcon className="book-icon" icon={faBookOpen} />
         </h1>
       <div className="add-book-wrapper cell">
-        <button className="button add-book-button" onClick={() => setShowModal(true)}>
+        <button className="add-book-button" onClick={() => setShowModal(true)}>
           Add a Book
         </button>
       </div>
