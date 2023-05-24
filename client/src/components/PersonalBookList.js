@@ -70,6 +70,7 @@ const PersonalBookList = (props) => {
         categories={book.categories}
         smallImage={book.smallImage}
         pageCount={book.pageCount}
+        bookStatus={book.bookStatus}
       />
     );
   });

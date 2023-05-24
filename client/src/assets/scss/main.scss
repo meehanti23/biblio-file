@@ -245,9 +245,10 @@ h2 {
 .remove-book {
   display: flex;
   justify-content: flex-end;
-  position: absolute;
   bottom: .5em;
+  position: absolute;
   right: .5em;
+  margin-left: 0;
 }
 
 .add-book-button {
@@ -657,4 +658,50 @@ li.menu-text.menu-name.home {
   background-color: #ec8f00;
   color: #4E1D04;
   cursor: pointer;
+}
+
+.edit-book-status {
+  position: absolute;
+  display: flex;
+  bottom: 0.5em;
+  left: 0.5em;
+  background-color:#ec8f00;
+  width: 3.5em;
+  height: 2.5em;
+  border-radius: .5em;
+  align-items: center;
+}
+
+.edit-book-status:hover {
+  background-color:#DCBE87;
+  cursor: pointer;
+}
+
+.status-modal-box {
+  width: 30%;
+  height: 40%;
+  margin: auto;
+  margin-top: 20%;
+  background-color: #DCBE87;
+  border: 5px solid #4E1D04;
+  border-radius: 1em;
+}
+
+.status-button {
+  margin-left: 5.2em;
+  margin-top: 1em;
+  font-size: 1.5em;
+}
+
+.status-button-text {
+  font-size: 1.5em;
+  font-weight: 900;
+  text-align: center;
+  margin-top: .7em;
+}
+
+.status-buttons {
+  font-weight: 900;
+  font-family: "Special Elite";
+  font-size: 1em;
 }
