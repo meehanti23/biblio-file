@@ -635,3 +635,26 @@ li.menu-text.menu-name.home {
   margin: 1em 3em;
   font-weight: 800;
 }
+
+.about-link {
+  background-color: #DCBE87;
+  color: #420e07;
+  border: 2px solid #420e07;
+  font-weight: 900;
+  border-radius: .5em;
+  font-size: 1.5em;
+  font-family: "Special Elite";
+  width: 40%;
+  height: 1.8em;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-link:hover {
+  background-color: #ec8f00;
+  color: #4E1D04;
+  cursor: pointer;
+}
