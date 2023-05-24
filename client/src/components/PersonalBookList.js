@@ -152,10 +152,10 @@ const PersonalBookList = (props) => {
           <button type="submit" className='search-button'>Search Google Books</button>
         </form>
         <div className="search-criteria">
-            <h3>Search By Book Title</h3>
-            <h4>Search <b>IS NOT</b> case-sensitive</h4>
-            <h4>Search <b>IS</b> space and spelling-sensitive</h4>
-            <h4>Press Return or Search Button to enter query</h4>
+            <h3 className='search-info'>Search By Book Title</h3>
+            <h4 className='search-info'>Search <b>IS NOT</b> case-sensitive</h4>
+            <h4 className='search-info'>Search <b>IS</b> space and spelling-sensitive</h4>
+            <h4 className='search-info'>Press Return or Search Button to enter query</h4>
         </div>
       </Modal>
       {mappedBooks}

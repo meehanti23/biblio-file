@@ -193,8 +193,8 @@ h2 {
 }
 
 .modal-box {
-  width: 60%;
-  height: 40%;
+  width: 50em;
+  height: 22em;
   margin: auto;
   margin-top: 20%;
   background-color: #DCBE87;
@@ -215,6 +215,10 @@ h2 {
   text-align: center;
   margin-top: 1em;
   height: 40%
+}
+
+.search-info {
+  font-weight: 900;
 }
 
 .search-button {
@@ -678,8 +682,8 @@ li.menu-text.menu-name.home {
 }
 
 .status-modal-box {
-  width: 30%;
-  height: 40%;
+  width: 25em;
+  height: 24em;
   margin: auto;
   margin-top: 20%;
   background-color: #DCBE87;
@@ -688,7 +692,7 @@ li.menu-text.menu-name.home {
 }
 
 .status-button {
-  margin-left: 5.2em;
+  margin-left: 32%;
   margin-top: 1em;
   font-size: 1.5em;
 }
