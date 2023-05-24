@@ -16,7 +16,17 @@ booksRouter.get('/', async (req, res) => {
     const categories = categoryArray.join(', ');
     const authorsArray = Array.isArray(body.authors) ? body.authors : [body.authors];
     const authors = authorsArray.join(', ');
-    const insertedBook = await GoogleBook.query().insert({ title: body.title, authors: authors, pageCount: body.pageCount, description: body.description, categories: categories, smallImage: body.imageLinks.smallThumbnail, largeImage: body.imageLinks.thumbnail, userId: req.user.id, username: req.user.username });
+    const insertedBook = await GoogleBook.query().insert({ 
+      title: body.title, 
+      authors: authors, 
+      pageCount: body.pageCount, 
+      description: body.description, 
+      categories: categories, 
+      smallImage: body.imageLinks.smallThumbnail, 
+      largeImage: body.imageLinks.thumbnail, 
+      userId: req.user.id, 
+      username: req.user.username 
+    });
       if (response.status === 200) {
       return res.status(200).json({ book: insertedBook });
     } else {
