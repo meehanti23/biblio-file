@@ -298,7 +298,7 @@ h2 {
 .page-title {
   font-family: "Special Elite";
   font-weight: 900;
-  font-size: 4em;
+  font-size: 3em;
 }
 
 .review-icons {
@@ -583,4 +583,24 @@ h2 {
 
 .author-tile {
   color:#ec8f00;
+}
+
+li.menu-text.menu-name.home {
+  margin-left: 0;
+}
+
+.sign-in {
+  color:#ec8f00;
+}
+
+.sign-in:hover {
+  color:#ec8f00;
+}
+
+.sign-in-button {
+  background-color:#742419;
+}
+
+.sign-in-button:hover {
+  background-color:#4E1D04;
 }
