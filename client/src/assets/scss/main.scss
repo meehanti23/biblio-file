@@ -20,6 +20,17 @@ $main-background-color: #002907;
   tab-size: 4;
 }
 
+h1,
+h2,
+p,
+button,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Special Elite";
+}
+
 body {
   background-color: transparent;
 }
@@ -50,8 +61,8 @@ body::before {
   background-color: #742419;
   color: #ec8f00;
   font-weight: bold;
-  width: calc(33.33% - 20px); /* Adjust the width based on your layout */
-  margin: 15px; /* Adjust the margin based on your desired spacing */
+  width: calc(33.33% - 20px);
+  margin: 15px; 
   display: inline-flex;
   flex-direction: column;
   justify-content: space-between;
@@ -103,7 +114,7 @@ a {
   font-weight: 900;
   font-size: 1.5rem;
   text-align: center;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Special Elite"
 }
 
 .home {
@@ -244,6 +255,7 @@ h2 {
   background-color: #DCBE87;
   font-weight: 900;
   border: 2px solid #4E1D04;
+  font-family: "Special Elite";
 }
 
 .review-form {
@@ -284,7 +296,7 @@ h2 {
 }
 
 .page-title {
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Special Elite";
   font-weight: 900;
   font-size: 4em;
 }
@@ -550,5 +562,25 @@ h2 {
   font-size: 1.8em;
   font-weight: 900;
   color:#742419;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Special Elite";
+}
+
+.homepage-list {
+  list-style-type: none;
+}
+
+.all-books-box {
+  border: 5px solid #420e07;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  background-color: #517174;
+  border-radius: 10px;
+  margin-top: 3em;
+  text-align: center;
+}
+
+.author-tile {
+  color:#ec8f00;
 }
