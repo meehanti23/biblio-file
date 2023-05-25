@@ -64,15 +64,15 @@ const PersonalBookList = (props) => {
 
   const filteredBooks = books.filter((book) => {
     if (selectedOption === 'All' && selectedCategory === 'All') {
-      return true; // No filters applied, show all books
+      return true;
     } else if (selectedOption === 'All') {
-      return book.categories.includes(selectedCategory); // Filter by category only
+      return book.categories.includes(selectedCategory);
     } else if (selectedCategory === 'All') {
-      return book.bookStatus === selectedOption; // Filter by bookStatus only
+      return book.bookStatus === selectedOption;
     } else {
       return (
         book.bookStatus === selectedOption && book.categories.includes(selectedCategory)
-      ); // Filter by both bookStatus and category
+      );
     }
   });
 
@@ -134,10 +134,12 @@ const PersonalBookList = (props) => {
 
   const categories = Array.from(new Set(books.flatMap((book) => book.categories))); // Get unique categories
 
-  const categoryOptions = categories.map((category) => (
-    <option key={category} value={category}>
-      {category}
-    </option>
+  const categoryOptions = categories
+    .filter((category) => category !== '')
+    .map((category) => (
+      <option key={category} value={category}>
+        {category}
+      </option>
   ));
 
   const resetFilters = () => {
@@ -152,11 +154,11 @@ const PersonalBookList = (props) => {
         Book Shelf
         <FontAwesomeIcon className="book-icon" icon={faBookOpen} />
         </h1>
-      <div className="add-book-wrapper cell">
+      {/* <div className="add-book-wrapper cell">
         <button className="add-book-button" onClick={() => setShowModal(true)}>
           Add a Book
         </button>
-      </div>
+      </div> */}
       <div className='genre-button-wrapper'>
         <button className="genre-button" onClick={toggleGenreChart}>
           <FontAwesomeIcon className="pie-icon" icon={faChartPie} />
@@ -195,6 +197,11 @@ const PersonalBookList = (props) => {
             <h4 className='search-info'>Press Return or Search Button to enter query</h4>
         </div>
       </Modal>
+      <div className="add-book-wrapper cell">
+        <button className="add-book-button" onClick={() => setShowModal(true)}>
+          Add a Book
+        </button>
+      </div>
       <div className='cell grid-x'>
         <div className='status-filter small-4'>
         <label htmlFor="dropdown" className='dropdown'>Filter by Status:</label>
