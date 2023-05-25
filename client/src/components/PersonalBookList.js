@@ -169,7 +169,7 @@ const PersonalBookList = (props) => {
   const sortingOptions = [
     { value: 'A-Z', label: 'A-Z' },
     { value: 'Z-A', label: 'Z-A' },
-    { value: 'Shortest', label: 'Length(Shortest_' },
+    { value: 'Shortest', label: 'Length(Shortest)' },
     { value: 'Longest', label: 'Length(Longest)' },
     { value: 'Newest', label: 'Newest' },
     { value: 'Oldest', label: 'Oldest' },
