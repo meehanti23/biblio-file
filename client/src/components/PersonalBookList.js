@@ -163,6 +163,7 @@ const PersonalBookList = (props) => {
   const resetFilters = () => {
     setSelectedOption('All');
     setSelectedCategory('All');
+    setSelectedSortingOption('A-Z');
   }
 
   const sortingOptions = [
