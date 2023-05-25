@@ -82,9 +82,18 @@ const SignInForm = () => {
     location.href = "/";
   }
 
+  const handleTestUser = () => {
+    setUserPayload({
+      username: "TestUser123",
+      email: "test@user.com",
+      password: "test",
+    });
+  };
+
   return (
     <div className="grid-container all-books-box">
       <h1>Sign In</h1>
+      <button className="button" onClick={handleTestUser}>Use Test User Credentials</button>
       {credentialsErrors ? <p className="callout alert">{credentialsErrors}</p> : null}
       <form onSubmit={onSubmit}>
         <div>
