@@ -138,11 +138,6 @@ h2 {
   color:#ec8f00;
 }
 
-.description {
-  font-weight: bold;
-  margin: 1.5rem 3rem;
-}
-
 .show-image {
   width: 40%;
   margin-left: auto;
@@ -234,6 +229,7 @@ h2 {
 .close {
   width: 7%;
   height: 7%;
+  margin-top: .5em;
 }
 
 .trash-icon {
@@ -661,6 +657,7 @@ li.menu-text.menu-name.home {
   height: 1.8em;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 2em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -716,4 +713,42 @@ li.menu-text.menu-name.home {
   font-weight: 900;
   font-family: "Special Elite";
   font-size: 1em;
+}
+
+.description {
+  font-weight: 600;
+  margin: 1.5rem 3rem;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1.3em;
+}
+
+.status-filter {
+  width: 20em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dropdown {
+  font-size: 1.5em;
+  font-weight: 900;
+  font-family: "Special Elite";
+}
+
+.filter-button {
+  background-color: #DCBE87;
+  color: #420e07;
+  border: 2px solid #420e07;
+  font-weight: 900;
+  border-radius: .5em;
+  font-size: 1em;
+  font-family: "Special Elite";
+  width: 6em;
+  height: 3em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
 }
