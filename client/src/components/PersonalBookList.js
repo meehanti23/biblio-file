@@ -14,6 +14,8 @@ const PersonalBookList = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [showGenreChart, setGenreShowChart] = useState(false);
   const [showPageChart, setPageShowChart] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
   const handleSearch = async () => {
     try {
@@ -60,7 +62,21 @@ const PersonalBookList = (props) => {
     getBooks();
   }, []);
 
-  const mappedBooks = books.map((book) => {
+  const filteredBooks = books.filter((book) => {
+    if (selectedOption === 'All' && selectedCategory === 'All') {
+      return true; // No filters applied, show all books
+    } else if (selectedOption === 'All') {
+      return book.categories.includes(selectedCategory); // Filter by category only
+    } else if (selectedCategory === 'All') {
+      return book.bookStatus === selectedOption; // Filter by bookStatus only
+    } else {
+      return (
+        book.bookStatus === selectedOption && book.categories.includes(selectedCategory)
+      ); // Filter by both bookStatus and category
+    }
+  });
+
+  const mappedBooks = filteredBooks.map((book) => {
     return (
       <PersonalBookTile
         key={book.id}
@@ -106,6 +122,27 @@ const PersonalBookList = (props) => {
 
   const togglePageChart = () => {
     setPageShowChart(!showPageChart)
+  }
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+  };
+
+  const categories = Array.from(new Set(books.flatMap((book) => book.categories))); // Get unique categories
+
+  const categoryOptions = categories.map((category) => (
+    <option key={category} value={category}>
+      {category}
+    </option>
+  ));
+
+  const resetFilters = () => {
+    setSelectedOption('All');
+    setSelectedCategory('All');
   }
 
   return (
@@ -158,6 +195,28 @@ const PersonalBookList = (props) => {
             <h4 className='search-info'>Press Return or Search Button to enter query</h4>
         </div>
       </Modal>
+      <div className='cell grid-x'>
+        <div className='status-filter small-4'>
+        <label htmlFor="dropdown" className='dropdown'>Filter by Status:</label>
+          <select id="dropdown" value={selectedOption} onChange={handleOptionChange}>
+            <option value="All">All</option>
+            <option value="Reading Now">Reading Now</option>
+            <option value="Have Read">Have Read</option>
+            <option value="Going to Read">Going to Read</option>
+            <option value="Not Sure Yet">Not Sure Yet</option>
+          </select>
+        </div>
+        <div className='filter-buttton small-2'>
+          <button className='filter-button' onClick={resetFilters}>Clear Filters</button>
+        </div>
+        <div className='status-filter small-4'>
+        <label htmlFor="dropdown" className='dropdown'>Filter by Category:</label>
+          <select id="dropdown" value={selectedCategory} onChange={handleCategoryChange}>
+            <option value="All">All</option>
+            {categoryOptions}
+          </select>
+        </div>
+      </div>
       {mappedBooks}
     </div>
   );
