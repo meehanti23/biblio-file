@@ -16,6 +16,7 @@ const PersonalBookList = (props) => {
   const [showPageChart, setPageShowChart] = useState(false);
   const [selectedOption, setSelectedOption] = useState('All');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedSortingOption, setSelectedSortingOption] = useState('A-Z');
 
   const handleSearch = async () => {
     try {
@@ -42,13 +43,29 @@ const PersonalBookList = (props) => {
     try {
       const response = await axios.get('/api/v1/users');
       if (response.status === 200) {
-        const sortedBooks = response.data.user.books.sort((a, b) => {
-          const titleA = a.title.toLowerCase();
-          const titleB = b.title.toLowerCase();
-          if (titleA < titleB) return -1;
-          if (titleA > titleB) return 1;
-          return 0;
-        });
+        let sortedBooks = response.data.user.books.slice();
+        switch (selectedSortingOption) {
+          case 'A-Z':
+            sortedBooks.sort((a, b) => a.title.localeCompare(b.title));
+            break;
+          case 'Z-A':
+            sortedBooks.sort((a, b) => b.title.localeCompare(a.title));
+            break;
+          case 'Shortest':
+            sortedBooks.sort((a, b) => a.pageCount - b.pageCount);
+            break;
+          case 'Longest':
+            sortedBooks.sort((a, b) => b.pageCount - a.pageCount);
+            break;
+          case 'Newest':
+            sortedBooks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            break;
+          case 'Oldest':
+            sortedBooks.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+            break;
+          default:
+            break;
+        }
         setBooks(sortedBooks);
       } else {
         console.error('Error in search:', response.data.error);
@@ -57,10 +74,11 @@ const PersonalBookList = (props) => {
       console.error('Error in search:', error);
     }
   };
+  
 
   useEffect(() => {
     getBooks();
-  }, []);
+  }, [selectedSortingOption]);
 
   const filteredBooks = books.filter((book) => {
     if (selectedOption === 'All' && selectedCategory === 'All') {
@@ -147,6 +165,25 @@ const PersonalBookList = (props) => {
     setSelectedCategory('All');
   }
 
+  const sortingOptions = [
+    { value: 'A-Z', label: 'A-Z' },
+    { value: 'Z-A', label: 'Z-A' },
+    { value: 'Shortest', label: 'Length(Shortest_' },
+    { value: 'Longest', label: 'Length(Longest)' },
+    { value: 'Newest', label: 'Newest' },
+    { value: 'Oldest', label: 'Oldest' },
+  ];  
+
+  const sortingOptionsList = sortingOptions.map((option) => (
+    <option key={option.value} value={option.value}>
+      {option.label}
+    </option>
+  ));
+
+  const handleSortingChange = (event) => {
+    setSelectedSortingOption(event.target.value);
+  };
+
   return (
     <div className="primary home-box grid-x">
       <h1 className="cell page-title">
@@ -154,11 +191,6 @@ const PersonalBookList = (props) => {
         Book Shelf
         <FontAwesomeIcon className="book-icon" icon={faBookOpen} />
         </h1>
-      {/* <div className="add-book-wrapper cell">
-        <button className="add-book-button" onClick={() => setShowModal(true)}>
-          Add a Book
-        </button>
-      </div> */}
       <div className='genre-button-wrapper'>
         <button className="genre-button" onClick={toggleGenreChart}>
           <FontAwesomeIcon className="pie-icon" icon={faChartPie} />
@@ -202,8 +234,8 @@ const PersonalBookList = (props) => {
           Add a Book
         </button>
       </div>
-      <div className='cell grid-x'>
-        <div className='status-filter small-4'>
+      <div className='cell grid-x filter-section'>
+        <div className='status-filter small-3'>
         <label htmlFor="dropdown" className='dropdown'>Filter by Status:</label>
           <select id="dropdown" value={selectedOption} onChange={handleOptionChange}>
             <option value="All">All</option>
@@ -213,15 +245,25 @@ const PersonalBookList = (props) => {
             <option value="Not Sure Yet">Not Sure Yet</option>
           </select>
         </div>
-        <div className='filter-buttton small-2'>
-          <button className='filter-button' onClick={resetFilters}>Clear Filters</button>
-        </div>
-        <div className='status-filter small-4'>
+        <div className='status-filter small-3'>
         <label htmlFor="dropdown" className='dropdown'>Filter by Category:</label>
           <select id="dropdown" value={selectedCategory} onChange={handleCategoryChange}>
             <option value="All">All</option>
             {categoryOptions}
           </select>
+        </div>
+        <div className='status-filter small-3'>
+        <label htmlFor="sortingDropdown" className='dropdown'>Sort by:</label>
+          <select
+            id="sortingDropdown"
+            value={selectedSortingOption}
+            onChange={handleSortingChange}
+          >
+          {sortingOptionsList}
+          </select>
+        </div>
+        <div className='filter-buttton small-2'>
+          <button className='filter-button' onClick={resetFilters}>Clear Filters</button>
         </div>
       </div>
       {mappedBooks}
