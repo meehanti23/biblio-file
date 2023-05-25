@@ -4,6 +4,8 @@ You will be able to add notes about these books and how you felt about them.
 You could potentially compare your library to another users.
 There will be a fun literature trivia link from the navbar.
 
+There is a button on the sign-in page to fill in a test user's credentials. Press the button and then click "Sign In"!
+
 Test User Credentials:
 username: TestUser123
 email: test@user.com
