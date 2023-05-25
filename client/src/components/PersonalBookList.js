@@ -11,6 +11,7 @@ import PageBarChart from './dataVisualization/PageBarChart';
 const PersonalBookList = (props) => {
   const [books, setBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [searchError, setSearchError] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [showGenreChart, setGenreShowChart] = useState(false);
   const [showPageChart, setPageShowChart] = useState(false);
@@ -32,6 +33,7 @@ const PersonalBookList = (props) => {
     } catch (error) {
       setShowModal(true);
       console.error('Error in search:', error);
+      setSearchError('Book not found. Please try again.')
     }
   };
 
@@ -150,7 +152,7 @@ const PersonalBookList = (props) => {
     setSelectedCategory(event.target.value);
   };
 
-  const categories = Array.from(new Set(books.flatMap((book) => book.categories))); // Get unique categories
+  const categories = Array.from(new Set(books.flatMap((book) => book.categories)));
 
   const categoryOptions = categories
     .filter((category) => category !== '')
@@ -184,6 +186,16 @@ const PersonalBookList = (props) => {
   const handleSortingChange = (event) => {
     setSelectedSortingOption(event.target.value);
   };
+
+  let modalError = null;
+  if (searchError) {
+    modalError = 
+      <div className="callout alert modal-error">
+        <h5 className="error-text">
+        {searchError}
+        </h5>
+      </div>
+  }
 
   return (
     <div className="primary home-box grid-x">
@@ -219,6 +231,7 @@ const PersonalBookList = (props) => {
             icon={faCircleXmark}
             onClick={() => setShowModal(false)}
         />
+        {modalError}
         <form onSubmit={handleSearchAndClose} className='search-bar'>
           <input type="text" value={searchTerm} onChange={handleInputChange} />
           <button type="submit" className='search-button'>Search Google Books</button>
