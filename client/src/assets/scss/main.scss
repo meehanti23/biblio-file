@@ -258,8 +258,8 @@ h2 {
   background-color: #DCBE87;
   font-weight: 900;
   height: 2.5em;
-  margin-bottom: 1em;
-  margin-top: 1.6em;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
   width: 9em;
   border: 2px solid #4E1D04;
   font-family: "Special Elite";
@@ -730,14 +730,16 @@ li.menu-text.menu-name.home {
 }
 
 .dropdown {
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: 900;
   font-family: "Special Elite";
+  color: #420e07;
+  margin-top: .5em;
 }
 
 .filter-button {
-  background-color: #DCBE87;
-  color: #420e07;
+  background-color: #420e07;
+  color: #DCBE87;
   border: 2px solid #420e07;
   font-weight: 900;
   border-radius: .5em;
@@ -751,11 +753,21 @@ li.menu-text.menu-name.home {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2em;
+  margin-top: 1.7em;
 }
 
 .filter-button:hover {
   background-color: #ec8f00;
   color: #4E1D04;
   cursor: pointer;
+}
+
+.filter-section {
+  margin-top: 1em;
+  background-color: #DCBE87;
+  border: 2px solid #420e07;
+  border-radius: .5em;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
 }

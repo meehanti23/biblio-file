@@ -4,4 +4,9 @@ You will be able to add notes about these books and how you felt about them.
 You could potentially compare your library to another users.
 There will be a fun literature trivia link from the navbar.
 
+Test User Credentials:
+username: TestUser123
+email: test@user.com
+password: test
+
 By Tim Meehan
