@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const TriviaTile = ({ index, question, correctAnswer, incorrectAnswers, selectedAnswer, onAnswerChange }) => {
+const TriviaTile = ({ index, question, answerReveal, correctAnswer, incorrectAnswers, selectedAnswer, onAnswerChange }) => {
   const decodedQuestion = decodeEntities(question);
   const decodedCorrectAnswer = decodeEntities(correctAnswer);
   const incorrectList = incorrectAnswers.map(answer => decodeEntities(answer));
@@ -14,6 +14,11 @@ const TriviaTile = ({ index, question, correctAnswer, incorrectAnswers, selected
     const answer = event.target.value;
     onAnswerChange(index, answer);
   };
+
+  let showAnswer
+  if (answerReveal) {
+    showAnswer = <p className="answer">The correct answer is: {decodedCorrectAnswer}</p>
+  }
 
   return (
     <div className="review-tile">
@@ -31,6 +36,7 @@ const TriviaTile = ({ index, question, correctAnswer, incorrectAnswers, selected
           <label className="multiple-choice" htmlFor={index + "-" + answerIndex}>{answer}</label>
         </div>
       ))}
+      {showAnswer}
     </div>
   );
 };

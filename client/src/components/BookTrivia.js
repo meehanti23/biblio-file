@@ -7,6 +7,7 @@ const BookTrivia = () => {
   const [numQuestions, setNumQuestions] = useState(10);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [score, setScore] = useState(null);
+  const [answerReveal, setAnswerReveal] = useState(false);
 
   const fetchTriviaData = async () => {
     try {
@@ -43,6 +44,7 @@ const BookTrivia = () => {
       return acc;
     }, 0);
     setScore(calculatedScore);
+    setAnswerReveal(true);
   };
 
   const triviaList = triviaData.map((trivia, index) => (
@@ -54,6 +56,7 @@ const BookTrivia = () => {
       incorrectAnswers={trivia.incorrect_answers}
       selectedAnswer={selectedAnswers[index]}
       onAnswerChange={handleAnswerChange}
+      answerReveal={answerReveal}
     />
   ));
 
