@@ -13,6 +13,7 @@ import AllBooks from "./AllBooks";
 import BookShowPage from "./BookShowPage";
 import GoodreadsTrending from "./GoodreadsTrending";
 import ReviewEditForm from "./ReviewEditForm";
+import SecretPage from "./layout/SecretPage"
 import BookTrivia from "./BookTrivia";
 import AboutDeveloper from "./AboutDeveloper";
 
@@ -45,6 +46,7 @@ const App = (props) => {
         />
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <Route exact path="/bookshelf" component={PersonalBookList} />
+        <Route exact path="/truth" component={SecretPage} />
         <Route exact path="/books" component={AllBooks} />
         <Route exact path="/trending" component={GoodreadsTrending} />
         <Route exact path="/trivia" component={BookTrivia} />
