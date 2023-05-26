@@ -86,6 +86,12 @@ const BookShowPage = (props) => {
             />
     }
 
+    let loginPrompt
+
+    if (!props.user) {
+        loginPrompt = <h4 className="cell show-text">Sign in to leave a review!</h4>
+    }
+
     return (
         <div className="primary show-box grid-x container">
             <h1 className="cell show-text">{book.title}</h1>
@@ -95,6 +101,7 @@ const BookShowPage = (props) => {
             <p className="description">{book.description}</p>
             <img className="show-image" src={book.largeImage} alt={book.title} />
             {ReviewFormSection}
+            {loginPrompt}
             <ReviewList reviews={reviews} saladId={book.id} currentUser={props.user}/>
         </div>
     )

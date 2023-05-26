@@ -31,9 +31,13 @@ const PersonalBookList = (props) => {
         translateServerErrors(response.data.errors);
       }
     } catch (error) {
-      setShowModal(true);
-      console.error('Error in search:', error);
-      setSearchError('Book not found. Please try again.')
+      if (error.response && error.response.status === 422) {
+        setShowModal(true);
+        setSearchError('Book already exists in the database.')
+      } else {
+        setShowModal(true);
+        setSearchError('Book not found. Please try again.')
+      }
     }
   };
 

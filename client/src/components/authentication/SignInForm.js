@@ -93,7 +93,7 @@ const SignInForm = () => {
   return (
     <div className="grid-container all-books-box">
       <h1>Sign In</h1>
-      <button className="button" onClick={handleTestUser}>Use Test User Credentials</button>
+      <button className="button sign-in-page" onClick={handleTestUser}>Use Test User Credentials</button>
       {credentialsErrors ? <p className="callout alert">{credentialsErrors}</p> : null}
       <form onSubmit={onSubmit}>
         <div>
@@ -123,7 +123,7 @@ const SignInForm = () => {
           </label>
         </div>
         <div>
-          <input type="submit" className="button" value="Sign In" />
+          <input type="submit" className="button sign-in-page" value="Sign In" />
         </div>
       </form>
     </div>
