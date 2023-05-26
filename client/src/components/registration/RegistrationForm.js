@@ -150,7 +150,7 @@ const RegistrationForm = () => {
           </label>
         </div>
         <div>
-          <input type="submit" className="button" value="Register" />
+          <input type="submit" className="button sign-in-page" value="Register" />
         </div>
       </form>
     </div>
