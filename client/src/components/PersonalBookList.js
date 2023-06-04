@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import PersonalBookTile from './PersonalBookTile';
 import axios from 'axios';
 import translateServerErrors from '../services/translateServerErrors';
-import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faBookOpen, faChartPie, faChartColumn } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpen, faChartPie, faChartColumn } from '@fortawesome/free-solid-svg-icons';
 import GenrePieChart from './dataVisualization/GenrePieChart';
 import PageBarChart from './dataVisualization/PageBarChart';
 import getBooks from './staticFuntions/getBooks';
+import AddBookModal from './reactModals/AddBookModal';
 
 const PersonalBookList = (props) => {
   const [books, setBooks] = useState([]);
@@ -190,29 +190,14 @@ const PersonalBookList = (props) => {
         </button>
       </div>
       {pageChart}
-      <Modal
-        isOpen={showModal}
-        onRequestClose={() => setShowModal(false)}
-        contentLabel="Add a Book"
-        className="modal-box"
-      >
-        <FontAwesomeIcon
-            className="close"
-            icon={faCircleXmark}
-            onClick={() => setShowModal(false)}
-        />
-        {modalError}
-        <form onSubmit={handleSearchAndClose} className='search-bar'>
-          <input type="text" value={searchTerm} onChange={handleInputChange} />
-          <button type="submit" className='search-button'>Search Google Books</button>
-        </form>
-        <div className="search-criteria">
-            <h3 className='search-info'>Search By Book Title</h3>
-            <h4 className='search-info'>Search <b>IS NOT</b> case-sensitive</h4>
-            <h4 className='search-info'>Search <b>IS</b> space and spelling-sensitive</h4>
-            <h4 className='search-info'>Press Return or Search Button to enter query</h4>
-        </div>
-      </Modal>
+      <AddBookModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        handleInputChange={handleInputChange}
+        modalError={modalError}
+        handleSearchAndClose={handleSearchAndClose}
+        searchTerm={searchTerm}
+      />
       <div className="add-book-wrapper cell">
         <button className="add-book-button" onClick={() => setShowModal(true)}>
           Add a Book
