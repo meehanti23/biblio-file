@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faBookOpen, faChartPie, faChartColumn } from '@fortawesome/free-solid-svg-icons';
 import GenrePieChart from './dataVisualization/GenrePieChart';
 import PageBarChart from './dataVisualization/PageBarChart';
+import getBooks from './staticFuntions/getBooks';
 
 const PersonalBookList = (props) => {
   const [books, setBooks] = useState([]);
@@ -44,46 +45,9 @@ const PersonalBookList = (props) => {
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
   };
-
-  const getBooks = async () => {
-    try {
-      const response = await axios.get('/api/v1/users');
-      if (response.status === 200) {
-        let sortedBooks = response.data.user.books.slice();
-        switch (selectedSortingOption) {
-          case 'A-Z':
-            sortedBooks.sort((a, b) => a.title.localeCompare(b.title));
-            break;
-          case 'Z-A':
-            sortedBooks.sort((a, b) => b.title.localeCompare(a.title));
-            break;
-          case 'Shortest':
-            sortedBooks.sort((a, b) => a.pageCount - b.pageCount);
-            break;
-          case 'Longest':
-            sortedBooks.sort((a, b) => b.pageCount - a.pageCount);
-            break;
-          case 'Newest':
-            sortedBooks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-            break;
-          case 'Oldest':
-            sortedBooks.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
-            break;
-          default:
-            break;
-        }
-        setBooks(sortedBooks);
-      } else {
-        console.error('Error in search:', response.data.error);
-      }
-    } catch (error) {
-      console.error('Error in search:', error);
-    }
-  };
   
-
   useEffect(() => {
-    getBooks();
+    getBooks(selectedSortingOption).then((fetchBooks) => setBooks(fetchBooks));
   }, [selectedSortingOption]);
 
   const filteredBooks = books.filter((book) => {
@@ -188,7 +152,9 @@ const PersonalBookList = (props) => {
   ));
 
   const handleSortingChange = (event) => {
-    setSelectedSortingOption(event.target.value);
+    const option = event.target.value;
+    setSelectedSortingOption(option);
+    getBooks(option).then((fetchBooks) => setBooks(fetchBooks));
   };
 
   let modalError = null;
