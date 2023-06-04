@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import translateServerErrors from '../services/translateServerErrors';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import Modal from 'react-modal';
 import deleteBook from './staticFuntions/deleteBook';
+import handleStatusSubmit from './staticFuntions/handleStatusSubmit';
+import StatusModal from './reactModals/StatusModal';
 
 const PersonalBookTile = ({ title, id, categories, authors, smallImage, bookStatus }) => {
     const [errors, setErrors] = useState([]);
@@ -32,30 +32,12 @@ const PersonalBookTile = ({ title, id, categories, authors, smallImage, bookStat
     
     const handleStatusChange = (e) => {
         setSelectedStatus(e.target.value);
-      };    
-
-    const handleStatusSubmit = async () => {
-        try {
-            const response = await fetch(`/api/v1/books/${id}`, {
-                method: 'PATCH',
-                headers: new Headers({
-                    'Content-Type': 'application/json'
-                }),
-                body: JSON.stringify({ bookStatus: selectedStatus })
-            });
-            if (!response.ok) {
-                const errorBody = await response.json();
-                const newError = translateServerErrors(errorBody);
-                return setErrors(newError);
-            } else {
-                const responseBody = await response.json();
-                const updatedStatus = responseBody.bookStatus;
-                setNewBookStatus(updatedStatus);
-                window.location.reload();
-            }
-        } catch (error) {
-            console.error(`Error in fetch: ${error.message}`);
-        }
+    };
+    
+    const handleSubmitStatus = async (event) => {
+        event.preventDefault();
+        handleStatusSubmit(id, setNewBookStatus, setErrors, selectedStatus);
+        setNewBookStatus(updatedStatus);
     }
 
     return (
@@ -66,63 +48,13 @@ const PersonalBookTile = ({ title, id, categories, authors, smallImage, bookStat
             {bookStatusInfo}
             <img src={smallImage} className='tile-image'/>
             <button className="edit-book-status" onClick={() => setShowModal(true)}>Edit Status</button>
-            <Modal
-                isOpen={showModal}
-                onRequestClose={() => setShowModal(false)}
-                contentLabel="Edit Status"
-                className="status-modal-box"
-            >
-            <div className="status-buttons">
-                <label className="status-buttons">
-                    <input
-                    type="radio"
-                    name="bookStatus"
-                    value="Reading Now"
-                    className='status-button'
-                    checked={selectedStatus === 'Reading Now'}
-                    onChange={handleStatusChange}
-                    />
-                    Reading Now
-                </label>
-                <label className="status-buttons">
-                    <input
-                    type="radio"
-                    name="bookStatus"
-                    value="Have Read"
-                    className='status-button'
-                    checked={selectedStatus === 'Have Read'}
-                    onChange={handleStatusChange}
-                    />
-                    Have Read
-                </label>
-                <label className="status-buttons">
-                    <input
-                    type="radio"
-                    name="bookStatus"
-                    value="Going to Read"
-                    className='status-button'
-                    checked={selectedStatus === 'Going to Read'}
-                    onChange={handleStatusChange}
-                    />
-                    Going to Read
-                </label>
-                <label className="status-buttons">
-                    <input
-                    type="radio"
-                    name="bookStatus"
-                    value="Not Sure Yet"
-                    className='status-button'
-                    checked={selectedStatus === 'Not Sure Yet'}
-                    onChange={handleStatusChange}
-                    />
-                    Not Sure Yet
-                </label>
-            </div>
-            <form onSubmit={handleStatusSubmit} className='search-bar'>
-                <button type="submit" className='search-button'>Submit Status</button>
-            </form>
-            <p className='status-button-text'>Keep track of your reading status with this book!</p>
-            </Modal>
+            <StatusModal
+                selectedStatus={selectedStatus}
+                handleStatusChange={handleStatusChange}
+                handleSubmitStatus={handleSubmitStatus}
+                setShowModal={setShowModal}
+                showModal={showModal}
+            />
             <div className="remove-book">
                 <FontAwesomeIcon
                     icon={faTrash}
