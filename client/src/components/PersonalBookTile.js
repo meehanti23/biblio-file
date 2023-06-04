@@ -4,6 +4,7 @@ import translateServerErrors from '../services/translateServerErrors';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import Modal from 'react-modal';
+import deleteBook from './staticFuntions/deleteBook';
 
 const PersonalBookTile = ({ title, id, categories, authors, smallImage, bookStatus }) => {
     const [errors, setErrors] = useState([]);
@@ -28,27 +29,7 @@ const PersonalBookTile = ({ title, id, categories, authors, smallImage, bookStat
     if (bookStatus !== '') {
         bookStatusInfo = <p>Status: {bookStatus}</p>
     }
-
-    const deleteBook = async () => {
-        try {
-            const response = await fetch(`/api/v1/books/${id}`, {
-                method: 'DELETE',
-                headers: new Headers({
-                    'Content-Type': 'application/json'
-                })
-            });
-            if (!response.ok) {
-                const errorBody = await response.json();
-                const newError = translateServerErrors(errorBody);
-                return setErrors(newError);
-            } else {
-                window.location.reload();
-            }
-        } catch (error) {
-            console.error(`Error in fetch: ${error.message}`);
-        }
-    }; 
-
+    
     const handleStatusChange = (e) => {
         setSelectedStatus(e.target.value);
       };    
@@ -145,7 +126,7 @@ const PersonalBookTile = ({ title, id, categories, authors, smallImage, bookStat
             <div className="remove-book">
                 <FontAwesomeIcon
                     icon={faTrash}
-                    onClick={deleteBook}
+                    onClick={deleteBook.bind(this, id)}
                     className='trash-icon'
                 />
             </div>
