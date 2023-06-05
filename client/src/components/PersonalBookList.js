@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen, faChartPie, faChartColumn } from '@fortawesome/free-solid-svg-icons';
 import GenrePieChart from './dataVisualization/GenrePieChart';
 import PageBarChart from './dataVisualization/PageBarChart';
-import handleBookSearch from './staticFunctions/handleBookSearch';
+import handleBookSearch from './staticFunctions/HandleBookSearch';
 import getBooks from './staticFunctions/getBooks';
 import AddBookModal from './reactModals/AddBookModal';
 
