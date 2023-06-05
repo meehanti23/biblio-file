@@ -6,7 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen, faChartPie, faChartColumn } from '@fortawesome/free-solid-svg-icons';
 import GenrePieChart from './dataVisualization/GenrePieChart';
 import PageBarChart from './dataVisualization/PageBarChart';
-import getBooks from './staticFuntions/getBooks';
+import handleBookSearch from './staticFunctions/handleBookSearch';
+import getBooks from './staticFunctions/getBooks';
 import AddBookModal from './reactModals/AddBookModal';
 
 const PersonalBookList = (props) => {
@@ -21,26 +22,9 @@ const PersonalBookList = (props) => {
   const [selectedSortingOption, setSelectedSortingOption] = useState('A-Z');
 
   const handleSearch = async () => {
-    try {
-      const response = await axios.get(`/api/v1/books?q=${encodeURIComponent(searchTerm)}`);
-      if (response.status === 200) {
-        const book = response.data.book;
-        books.push(book)
-        setShowModal(false);
-        window.location.reload(false);
-      } else {
-        translateServerErrors(response.data.errors);
-      }
-    } catch (error) {
-      if (error.response && error.response.status === 422) {
-        setShowModal(true);
-        setSearchError('Book is already on your shelf.')
-      } else {
-        setShowModal(true);
-        setSearchError('Book not found. Please try again.')
-      }
-    }
-  };
+    let book
+    handleBookSearch(searchTerm, books, book, setShowModal, setSearchError)
+  }
 
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
