@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PersonalBookTile from './PersonalBookTile';
-import axios from 'axios';
-import translateServerErrors from '../services/translateServerErrors';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen, faChartPie, faChartColumn } from '@fortawesome/free-solid-svg-icons';
 import GenrePieChart from './dataVisualization/GenrePieChart';
