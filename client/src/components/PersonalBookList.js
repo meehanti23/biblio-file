@@ -21,7 +21,7 @@ const PersonalBookList = (props) => {
 
   const handleSearch = async () => {
     let book
-    handleBookSearch(searchTerm, books, book, setShowModal, setSearchError)
+    handleBookSearch({ searchTerm, books, book, setShowModal, setSearchError })
   }
 
   const handleInputChange = (e) => {
