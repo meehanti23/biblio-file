@@ -809,13 +809,19 @@ li.menu-text.menu-name.home {
 
 .truth-link {
   position: absolute;
-  top: 38%;
-  left: 76.2%;
+  top: 13.2%;
+  left: 87.8%;
   transform: translate(-50%, -50%);
   color: black;
   height: 10px;
   width: 10em;
+  z-index: 1;
   opacity: 0;
+}
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
 }
 
 .truth-link:hover {
