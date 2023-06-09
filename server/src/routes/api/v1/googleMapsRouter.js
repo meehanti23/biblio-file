@@ -11,9 +11,8 @@ googleMapsRouter.get('/', async (req, res) => {
         const geoCodeResponse = await axios.get(requestUrl);
         const { lat, lng } = geoCodeResponse.data.results[0].geometry.location;
         const location = geoCodeResponse.data.results[0].formatted_address;
-        if (geoCodeResponse.status === 200) {
-            return res.json({ latitude: lat, longitude: lng, location: location });
-        }
+        console.log(lat, lng)
+        return res.status(200).json({ lat, lng, location: location });
     }
     catch (error) {
         console.error('Error in search:', error);

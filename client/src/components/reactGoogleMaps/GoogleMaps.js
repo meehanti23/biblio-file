@@ -3,18 +3,19 @@ import { GoogleMap, Marker, withScriptjs, withGoogleMap } from "react-google-map
 import axios from "axios";
 
 const GoogleMaps = (props) => {
-    const [zipCode, setZipCode] = useState('');
+    const [address, setAddress] = useState('');
     const [latAndLong, setLatAndLong] = useState({});
+    const [location, setLocation] = useState({ lat: 42.361, lng: -71.057 });
 
     
-    const handleZipCodeSearch = async () => {
+    const handleAddressSearch = async (event) => {
+        event.preventDefault();
         try {
-            const response = await axios.get(`/api/v1/googleMaps?address=${encodeURIComponent(zipCode)}`);
-            debugger
+            const response = await axios.get(`/api/v1/googleMaps?address=${encodeURIComponent(address)}`);
             if (response.status === 200) {
-                const { latitude, longitude, location } = response.data;
-                console.log("ZIP CODE SEARCHHHHHHH", response.data);
-                setLatAndLong({ latitude, longitude });
+                const { lat, lng, location } = response.data;
+                setLatAndLong({ lat, lng });
+                setLocation(location);
             } else {
                 throw new Error('An error occurred while searching for zip code.');
             }
@@ -23,10 +24,10 @@ const GoogleMaps = (props) => {
         }
     };      
     
-    const handleZipCodeChange = (event) => {
-      setZipCode(event.target.value);
+    const handleAddressChange = (event) => {
+      setAddress(event.target.value);
     };
-    const center = { lat: 42.361, lng: -71.057 };
+    const center = latAndLong
   
     const MapWithAMarker = withScriptjs(withGoogleMap(props => (
       <GoogleMap defaultZoom={11} defaultCenter={center}>
@@ -42,21 +43,21 @@ const GoogleMaps = (props) => {
           <li>Displaying a single marker for Boston</li>
           <li>May not recommend compared to other implementations, not as elegant</li>
         </ul>
-        <form onSubmit={handleZipCodeSearch}>
+        <form onSubmit={handleAddressSearch}>
           <input
             type="text"
             placeholder="Enter your zip code"
-            value={zipCode}
-            onChange={handleZipCodeChange}
+            value={address}
+            onChange={handleAddressChange}
           />
           <button type="submit">Zoom In</button>
         </form>
-        {/* <MapWithAMarker
+        <MapWithAMarker
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&v=3.exp&libraries=places"
           loadingElement={<div style={{ height: "90%" }} />}
           containerElement={<div style={{ height: "300px" }} />}
           mapElement={<div style={{ height: "100%" }} />}
-        /> */}
+        />
       </>
     );
   };
