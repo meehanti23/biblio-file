@@ -12,7 +12,7 @@ googleMapsRouter.get('/', async (req, res) => {
         const { lat, lng } = geoCodeResponse.data.results[0].geometry.location;
         const location = geoCodeResponse.data.results[0].formatted_address;
         console.log(lat, lng)
-        return res.status(200).json({ lat, lng, location: location });
+        return res.status(200).json({ lat, lng, location: location, apiKey });
     }
     catch (error) {
         console.error('Error in search:', error);
