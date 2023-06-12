@@ -11,7 +11,7 @@ const AboutDeveloper = () => {
                 <li>Google Maps -- Geolocation, Places, React Google Maps</li>
                 <li>Google Book API</li>
                 <li>Open Trivia Database</li>
-                <li>Goodreads</li>
+                <li>Cheerio Web Scraper</li>
                 <li>Google Charts</li>
             </ul>
         </div>
