@@ -849,3 +849,109 @@ li.menu-text.menu-name.home {
   margin-top: 1em;
   border: 3px solid black;
 }
+
+.map-container {
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px solid black;
+  overflow-anchor: none;
+}
+
+.map-element {
+  overflow-anchor: none;
+}
+
+.map-description {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.3em;
+  color: black;
+}
+
+.map-title {
+  font-size: 2.5em;
+  font-weight: 900;
+}
+
+.map-input {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.map-submit {
+  background-color: #420e07;
+  color:#bfbdb0;
+  border: 2px solid #420e07;
+  font-weight: 900;
+  border-radius: .5em;
+  font-size: 1em;
+  font-family: "Special Elite";
+  width: 15em;
+  height: 3em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.7em;
+}
+
+.map-list {
+  margin-top: 1em;
+}
+
+.map-list-item {
+  text-align: left;
+  margin-left: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+.map-list {
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: .5em;
+  border: 2px solid #420e07;
+}
+
+.bookstore-list {
+  background-color: #FAC898;
+}
+
+.library-list {
+  background-color: #ACD1AF;
+}
+
+.icon-image {
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: .5em;
+}
+
+.libraries {
+  background-color: #ACD1AF;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: .5em;
+  border: 2px solid #420e07;
+}
+
+.bookstores {
+  background-color: #FAC898;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: .5em;
+  border: 2px solid #420e07;
+}
+
+.libraries,
+.bookstores {
+  margin-top: 1em;
+  margin-bottom: 1.3em;
+}
+
+.map-list-title {
+  font-weight: 900;
+  margin-top: .3em;
+}

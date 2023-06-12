@@ -45,6 +45,9 @@ const TopBar = ({ user }) => {
           <li className="menu-text home">
             <Link to="/trivia">Book Trivia</Link>
           </li>
+          <li className="menu-text home">
+            <Link to="/googleMaps">Books Near You</Link>
+          </li>
         </ul>
       </div>
       <div className="top-bar-right">

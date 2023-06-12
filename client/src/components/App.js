@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { hot } from "react-hot-loader/root";
-
 import getCurrentUser from "../services/getCurrentUser";
 import "../assets/scss/main.scss";
 import RegistrationForm from "./registration/RegistrationForm";
@@ -16,6 +15,7 @@ import ReviewEditForm from "./ReviewEditForm";
 import SecretPage from "./layout/SecretPage"
 import BookTrivia from "./BookTrivia";
 import AboutDeveloper from "./AboutDeveloper";
+import GoogleMaps from "./reactGoogleMaps/GoogleMaps";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -46,6 +46,7 @@ const App = (props) => {
         />
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <Route exact path="/bookshelf" component={PersonalBookList} />
+        <Route exact path="/googleMaps" component={GoogleMaps} />
         <Route exact path="/truth" component={SecretPage} />
         <Route exact path="/books" component={AllBooks} />
         <Route exact path="/trending" component={GoodreadsTrending} />
