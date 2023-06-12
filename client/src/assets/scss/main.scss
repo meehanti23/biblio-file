@@ -897,6 +897,12 @@ li.menu-text.menu-name.home {
   margin-top: 1.7em;
 }
 
+.map-submit:hover {
+  background-color: #ec8f00;
+  color: #4E1D04;
+  cursor: pointer;
+}
+
 .map-list {
   margin-top: 1em;
 }
@@ -954,4 +960,14 @@ li.menu-text.menu-name.home {
 .map-list-title {
   font-weight: 900;
   margin-top: .3em;
+}
+
+.drop-out {
+  color: #742419;
+  font-size: 1em;
+  font-weight: 900;
+}
+
+.drop-out:hover {
+  cursor: pointer;
 }

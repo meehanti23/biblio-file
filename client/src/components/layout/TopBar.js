@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SignOutButton from "../authentication/SignOutButton";
 
 const TopBar = ({ user }) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   const unauthenticatedListItems = [
     <li key="sign-in" className="button sign-in-button">
       <Link to="/user-sessions/new" className="sign-in">Sign In</Link>
@@ -26,6 +28,10 @@ const TopBar = ({ user }) => {
     </li>,
   ];
 
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   return (
     <div className="top-bar">
       <div className="top-bar-left">
@@ -40,14 +46,21 @@ const TopBar = ({ user }) => {
             <Link to="/books">All Books</Link>
           </li>
           <li className="menu-text home">
-            <Link to="/trending">Trending Books</Link>
+            <div onClick={toggleDropdown} className="menu-text home drop-out">Resources</div>
           </li>
-          <li className="menu-text home">
-            <Link to="/trivia">Book Trivia</Link>
-          </li>
-          <li className="menu-text home">
-            <Link to="/googleMaps">Books Near You</Link>
-          </li>
+            {isDropdownOpen && (
+              <ul className="navbar-list">
+                <li className="menu-text home">
+                  <Link to="/trending">Trending Books</Link>
+                </li>
+                <li className="menu-text home">
+                  <Link to="/trivia">Book Trivia</Link>
+                </li>
+                <li className="menu-text home">
+                  <Link to="/googleMaps">Books Near You</Link>
+                </li>
+              </ul>
+            )}
         </ul>
       </div>
       <div className="top-bar-right">

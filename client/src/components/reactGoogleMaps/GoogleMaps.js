@@ -95,7 +95,7 @@ const GoogleMaps = (props) => {
                     <input
                     type="text"
                     className="map-input"
-                    placeholder="Enter your zip code"
+                    placeholder="Enter your location"
                     value={address}
                     onChange={handleAddressChange}
                     />
