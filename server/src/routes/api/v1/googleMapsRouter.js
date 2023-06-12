@@ -29,8 +29,6 @@ googleMapsRouter.get('/', async (req, res) => {
                 lng: bookStore.geometry.location.lng
             }
         })
-        console.log(libraryList)
-        console.log(bookStoreList)
         return res.status(200).json({ lat, lng, location: location, libraryList, bookStoreList });
     }
     catch (error) {
