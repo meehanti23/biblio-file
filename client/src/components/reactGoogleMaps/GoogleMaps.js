@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { GoogleMap, Marker, withScriptjs, withGoogleMap } from "react-google-maps";
 import axios from "axios";
+import MapWithAMarker from "../mapFunctionality/MapWithAMarker";
 
 const GoogleMaps = (props) => {
     const [address, setAddress] = useState('');
@@ -10,6 +10,8 @@ const GoogleMaps = (props) => {
     const [libraryList, setLibraryList] = useState([]);
     const [bookStoreList, setBookStoreList] = useState([]);
     const [mapLoaded, setMapLoaded] = useState(false);
+    const [selectedLibraryMarker, setSelectedLibraryMarker] = useState(null);
+    const [selectedBookStoreMarker, setSelectedBookStoreMarker] = useState(null);
 
     const fetchApiKey = async () => {
         try {
@@ -51,7 +53,13 @@ const GoogleMaps = (props) => {
         setAddress(event.target.value);
     };
 
-    const center = latAndLong;
+    const handleLibraryMarkerClick = (marker) => {
+        setSelectedLibraryMarker(marker);
+    };
+
+    const handleBookStoreMarkerClick = (marker) => {
+        setSelectedBookStoreMarker(marker);
+    };
 
     const listedLibraries = libraryList.map((library) => {
         return (
@@ -64,24 +72,6 @@ const GoogleMaps = (props) => {
             <li key={bookStore.name + bookStore.lat} className="map-list-item">{bookStore.name}</li>
         )
     });
-
-    const MapWithAMarker = withScriptjs(withGoogleMap(props => (
-        <GoogleMap defaultZoom={13} className="map-element" defaultCenter={center}>
-            <Marker position={center} />
-            {bookStoreList.map(bookStore => (
-                <Marker key={bookStore.name + bookStore.lat} icon={{
-                url: "http://maps.google.com/mapfiles/ms/icons/orange-dot.png",
-                scaledSize: new window.google.maps.Size(32, 32)
-                }} position={{ lat: bookStore.lat, lng: bookStore.lng }} />
-            ))}
-            {libraryList.map(library => (
-                <Marker key={library.name + library.lat} icon={{
-                url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
-                scaledSize: new window.google.maps.Size(32, 32)
-                }} position={{ lat: library.lat, lng: library.lng }} />
-            ))}
-        </GoogleMap>
-    )));
 
     return (
         <div className="primary show-box grid-x">
@@ -110,6 +100,15 @@ const GoogleMaps = (props) => {
                     loadingElement={<div style={{ height: "90%" }} />}
                     containerElement={<div className="map-container" style={{ height: "30em", width: "60%" }} />}
                     mapElement={<div className="map-element" style={{ height: "100%" }} />}
+                    bookStoreList={bookStoreList}
+                    libraryList={libraryList}
+                    handleBookStoreMarkerClick={handleBookStoreMarkerClick}
+                    selectedBookStoreMarker={selectedBookStoreMarker}
+                    setSelectedBookStoreMarker={setSelectedBookStoreMarker}
+                    handleLibraryMarkerClick={handleLibraryMarkerClick}
+                    selectedLibraryMarker={selectedLibraryMarker}
+                    setSelectedLibraryMarker={setSelectedLibraryMarker}
+                    latAndLong={latAndLong}
                     />
                 </div>
                     <ul className="map-list library-list small-5">
