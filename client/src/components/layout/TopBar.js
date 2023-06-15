@@ -42,7 +42,7 @@ const TopBar = ({ user }) => {
           <li className="menu-text menu-name home">
             <Link to="/">BiblioFile</Link>
           </li>
-          <li className="menu-text home">
+          <li className="menu-text home home-lead">
             <Link to="/books">All Books</Link>
           </li>
           <li className="menu-text home">

@@ -5,4 +5,4 @@ export { default as deleteBookById } from './deleteBookById.js';
 export { default as updateBookStatusById } from './updateBookStatusById.js';
 export { default as getGoogleMapsAPIKey } from './mapFunctions/getGoogleMapsAPIKey.cjs';
 export { default as geocodeAddress } from './mapFunctions/geocodeAddress.js';
-export { default as searchPlaces } from './mapFunctions/searchPlaces.js';
+export { default as searchPlacesTS } from './mapFunctions/searchPlacesTS.cjs';
