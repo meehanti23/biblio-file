@@ -17,7 +17,7 @@ googleMapsRouter.get('/', async (req, res) => {
       console.error('Error in search:', error);
       res.status(500).json({ error: 'An error occurred while searching for books.' });
     }
-  });
+});
 
 googleMapsRouter.get('/apiKey', async (req, res) => {
     try {
