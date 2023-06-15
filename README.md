@@ -1,8 +1,9 @@
-This App will be a space to add the books from your personal library.
-You will be able to find information about these books from google's Book API.
-You will be able to add notes about these books and how you felt about them.
-You could potentially compare your library to another users.
-There will be a fun literature trivia link from the navbar.
+This App will allow users to catalog their personal library when logged in.
+There are data visualization tools to view the breakdown of the user's library.
+There are additional tools/activities including:
+- Book trivia
+- Map of book stores and libraries in selected area
+- Goodreads trending
 
 There is a button on the sign-in page to fill in a test user's credentials. Press the button and then click "Sign In"!
 
