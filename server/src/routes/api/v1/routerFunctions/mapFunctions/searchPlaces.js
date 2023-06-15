@@ -1,4 +1,4 @@
-import getGoogleMapsAPIKey from "./getGoogleMapsAPIKey.js";
+import getGoogleMapsAPIKey from "./getGoogleMapsAPIKey.cjs";
 import axios from "axios";
 
 async function searchPlaces(lat, lng, keyword) {
