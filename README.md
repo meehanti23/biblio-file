@@ -1,6 +1,6 @@
 https://bibliofiles.herokuapp.com/ 
 
-Bibliofile is designed to help users catalog their personal library. 
+BiblioFile is designed to help users catalog their personal library. 
 When logged in, users can add books to their personal library by providing the book title.
 The app offers data visualization tools to display breakdowns and statistics of the user's library, including page count and genre.
 The visualizations are generated using the Google Charts library.
