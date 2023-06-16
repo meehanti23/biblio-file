@@ -12,7 +12,6 @@ Additional Tools and Activities:
 This feature utilizes the React Google Maps, Google Geolocation, and Google Places APIs.
 - Goodreads Trending: Stay up to date with the latest trends in books by accessing Goodreads' trending book lists.
 
-Test User Credentials
 To quickly explore the app's functionality, use the test credentials button on the sign in page.
 Or use the following log in info. https://bibliofiles.herokuapp.com/
 
