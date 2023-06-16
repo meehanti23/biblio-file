@@ -23,10 +23,10 @@ Technologies Used
 
 The Personal Library Catalog App is built using the following technologies and libraries:
 
-Google Books API: Fetches book information for cataloging purposes.
-React Google Maps: Integrates Google Maps into the app to display book stores and libraries on a map.
-Google Geolocation API: Provides geolocation data for mapping features.
-Google Places API: Retrieves information about book stores and libraries for mapping features.
-Open Trivia API: Enables book trivia activities to challenge users' knowledge.
-Google Charts: Generates visualizations to display breakdowns and statistics of the user's library.
-Cheerio Web Scraper: Facilitates web scraping for gathering data from external sources.
+- Google Books API: Fetches book information for cataloging purposes.
+- React Google Maps: Integrates Google Maps into the app to display book stores and libraries on a map.
+- Google Geolocation API: Provides geolocation data for mapping features.
+- Google Places API: Retrieves information about book stores and libraries for mapping features.
+- Open Trivia API: Enables book trivia activities to challenge users' knowledge.
+- Google Charts: Generates visualizations to display breakdowns and statistics of the user's library.
+- Cheerio Web Scraper: Facilitates web scraping for gathering data from Goodreads.
