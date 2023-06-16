@@ -1,15 +1,32 @@
-This App will allow users to catalog their personal library when logged in.
-There are data visualization tools to view the breakdown of the user's library.
-There are additional tools/activities including:
-- Book trivia
-- Map of book stores and libraries in selected area
-- Goodreads trending
+https://bibliofiles.herokuapp.com/ 
 
-There is a button on the sign-in page to fill in a test user's credentials. Press the button and then click "Sign In"!
+Bibliofile is designed to help users catalog their personal library. When logged in, users can perform the following actions:
+Users can add books to their personal library by providing the book title.
+The app offers data visualization tools to display breakdowns and statistics of the user's library, including page count and genre.
+The visualizations are generated using the Google Charts library.
 
-Test User Credentials:
-username: TestUser123
-email: test@user.com
-password: test
+Additional Tools and Activities:
 
-By Tim Meehan
+Book Trivia: Engage in book trivia activities to test your knowledge and discover interesting facts about books.
+Map of Book Stores and Libraries: Explore a map that displays nearby book stores and libraries in the selected area. 
+This feature utilizes the React Google Maps, Google Geolocation, and Google Places APIs.
+Goodreads Trending: Stay up to date with the latest trends in books by accessing Goodreads' trending book lists.
+
+Test User Credentials
+To quickly explore the app's functionality, use the test credentials button on the sign in page.
+Or use the following log in info. https://bibliofiles.herokuapp.com/
+
+Username: TestUser123
+Email: test@user.com
+Password: test
+Technologies Used
+
+The Personal Library Catalog App is built using the following technologies and libraries:
+
+Google Books API: Fetches book information for cataloging purposes.
+React Google Maps: Integrates Google Maps into the app to display book stores and libraries on a map.
+Google Geolocation API: Provides geolocation data for mapping features.
+Google Places API: Retrieves information about book stores and libraries for mapping features.
+Open Trivia API: Enables book trivia activities to challenge users' knowledge.
+Google Charts: Generates visualizations to display breakdowns and statistics of the user's library.
+Cheerio Web Scraper: Facilitates web scraping for gathering data from external sources.
