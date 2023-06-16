@@ -7,10 +7,10 @@ The visualizations are generated using the Google Charts library.
 
 Additional Tools and Activities:
 
-Book Trivia: Engage in book trivia activities to test your knowledge and discover interesting facts about books.
-Map of Book Stores and Libraries: Explore a map that displays nearby book stores and libraries in the selected area. 
+- Book Trivia: Engage in book trivia activities to test your knowledge and discover interesting facts about books.
+- Map of Book Stores and Libraries: Explore a map that displays nearby book stores and libraries in the selected area. 
 This feature utilizes the React Google Maps, Google Geolocation, and Google Places APIs.
-Goodreads Trending: Stay up to date with the latest trends in books by accessing Goodreads' trending book lists.
+- Goodreads Trending: Stay up to date with the latest trends in books by accessing Goodreads' trending book lists.
 
 Test User Credentials
 To quickly explore the app's functionality, use the test credentials button on the sign in page.
@@ -19,7 +19,6 @@ Or use the following log in info. https://bibliofiles.herokuapp.com/
 Username: TestUser123
 Email: test@user.com
 Password: test
-Technologies Used
 
 The Personal Library Catalog App is built using the following technologies and libraries:
 
