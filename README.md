@@ -19,7 +19,7 @@ Username: TestUser123
 Email: test@user.com
 Password: test
 
-The Personal Library Catalog App is built using the following technologies and libraries:
+The Personal Library Catalog App is built using the following technologies:
 
 - Google Books API: Fetches book information for cataloging purposes.
 - React Google Maps: Integrates Google Maps into the app to display book stores and libraries on a map.
