@@ -2,6 +2,7 @@ import express from "express";
 import objection from "objection";
 const { ValidationError } = objection;
 import { Review } from "../../../models/index.js";
+import ReviewSerializer from "../../../serializers/ReviewSerializer.js";
 
 const bookReviewsRouter = new express.Router({ mergeParams: true });
 
@@ -14,7 +15,8 @@ bookReviewsRouter.post('/', async (req, res) => {
     try {
         const insertedReview = await Review.query().insertAndFetch(formDataWithId);
         insertedReview.user = reviewer
-        return res.status(200).json({ reviewBody: insertedReview }); 
+        const  serializedReview = await ReviewSerializer.getSummary(insertedReview);
+        return res.status(200).json({ reviewBody: serializedReview }); 
     } catch (error) {
         if (error instanceof ValidationError) {
             return res.status(422).json({ errors: error.data });
