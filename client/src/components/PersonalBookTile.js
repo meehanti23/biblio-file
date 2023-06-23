@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import deleteBook from './staticFunctions/databaseBookFunctions/deleteBook.js';
-import handleStatusSubmit from './staticFunctions/databaseBookFunctions/handleStatusSubmit.js';
 import StatusModal from './reactModals/StatusModal';
+import { deleteBook, handleStatusSubmit } from './staticFunctions/index';
 
 const PersonalBookTile = ({ title, id, categories, authors, smallImage, bookStatus }) => {
     const [errors, setErrors] = useState([]);
