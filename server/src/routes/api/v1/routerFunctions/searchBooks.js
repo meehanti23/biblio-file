@@ -1,11 +1,12 @@
 import { GoogleBook } from "../../../../models/index.js";
 import axios from "axios"; 
 import extractBookInfo from "./extractBookInfo.js";
+const getGoogleBookAPIKey = require("./googleBookFunctions/getGoogleBookAPIKey.js")
 
 async function searchBooks(req, res) {
   try {
     const { q } = req.query;
-    const apiKey = process.env.GOOGLE_API_KEY;
+    const apiKey = getGoogleBookAPIKey();
     const requestUrl = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(q)}&key=${apiKey}`;
     const response = await axios.get(requestUrl);
     const bookInfo = extractBookInfo(response.data.items[0].volumeInfo);

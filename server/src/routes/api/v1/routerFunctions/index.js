@@ -6,3 +6,4 @@ export { default as updateBookStatusById } from './updateBookStatusById.js';
 export { default as getGoogleMapsAPIKey } from './mapFunctions/getGoogleMapsAPIKey.cjs';
 export { default as geocodeAddress } from './mapFunctions/geocodeAddress.cjs';
 export { default as searchPlacesTS } from './mapFunctions/searchPlacesTS.cjs';
+export { default as getGoogleBookAPIKey } from './googleBookFunctions/getGoogleBookAPIKey.cjs';
